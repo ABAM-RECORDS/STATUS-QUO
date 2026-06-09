@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>STATUS QUO</title>
+    <style>
+        /* CSS Reset and Lock Scrolling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #000000;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Black Variant Theme */
+        body.black-variant {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            padding: 2vh 4vw;
+        }
+
+        /* Header Elements */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 10vh;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 3vw;
+        }
+
+        .header-btn {
+            padding: clamp(0.4rem, 1vh, 0.8rem) clamp(1rem, 2vw, 2rem);
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
+        }
+
+        .cart {
+            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        /* View Management */
+        .view {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Central Product Display */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            padding: 0 5vw;
+        }
+
+        .slogan-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slogan-text {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            text-align: center;
+            word-wrap: break-word;
+            color: #000000;
+            transition: color 0.4s ease, opacity 0.2s ease;
+        }
+
+        body.black-variant .slogan-text {
+            color: #ffffff;
+        }
+
+        .price-tag {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 800;
+            margin-top: 3vh;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Size Selector */
+        .size-selector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2vw;
+            margin-top: 4vh;
+        }
+
+        .size-btn {
+            background: none;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            width: clamp(3rem, 5vw, 4rem);
+            height: clamp(3rem, 5vw, 4rem);
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            color: #000000;
+        }
+
+        .size-btn.active {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        body.black-variant .size-btn {
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        body.black-variant .size-btn.active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Controls Section */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15vh;
+            padding-bottom: 2vh;
+            flex-shrink: 0;
+        }
+
+        .controls.centered {
+            justify-content: center;
+            gap: 2vw;
+        }
+
+        .action-btn {
+            background: none;
+            border: 2px solid #000000;
+            border-radius: 50px; 
+            padding: clamp(0.8rem, 2vh, 1.2rem) clamp(1.5rem, 3vw, 3rem);
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            color: #000000;
+        }
+
+        body.black-variant .action-btn {
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .action-btn:hover, .action-btn:active {
+            background-color: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        body.black-variant .action-btn:hover, body.black-variant .action-btn:active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 1vw;
+        }
+
+        /* Blog Section */
+        .blog-view-container {
+            display: block; 
+            width: 100%;
+            height: 90vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; 
+            padding: 2vh 5vw 10vh 5vw;
+        }
+
+        .blog-article {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .blog-article h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .blog-article .blog-subtitle {
+            font-size: 0.55em;
+            font-weight: 700;
+            display: block;
+            margin-top: 0.5rem;
+            color: #555;
+        }
+
+        body.black-variant .blog-article .blog-subtitle {
+            color: #aaa;
+        }
+
+        .blog-article h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .blog-article p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-article blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            border-left: 4px solid #000000;
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+            font-weight: 700;
+        }
+
+        body.black-variant .blog-article blockquote {
+            border-left-color: #ffffff;
+        }
+
+        .blog-footer-controls {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        /* Mobile Optimisation */
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                justify-content: space-around;
+                height: 25vh;
+            }
+            .controls.centered {
+                flex-direction: column;
+            }
+            .slogan-text {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+            .size-selector {
+                gap: 5vw;
+            }
+            .size-btn {
+                width: clamp(3.5rem, 15vw, 4.5rem);
+                height: clamp(3.5rem, 15vw, 4.5rem);
+            }
+            .nav-group {
+                gap: 4vw;
+            }
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            .header-right {
+                gap: 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">STATUS QUO</div>
+            <div class="header-right">
+                <button class="action-btn header-btn" id="storeNavBtn">Store</button>
+                <button class="action-btn header-btn" id="blogNavBtn">Blog</button>
+                <div class="cart" id="cartDisplay">Bag [0]</div>
+            </div>
+        </header>
+
+        <div id="browseView" class="view">
+            <main class="main-content">
+                <div class="slogan-container">
+                    <div class="slogan-text" id="browseSlogan">THOT DAUGHTER</div>
+                </div>
+            </main>
+
+            <nav class="controls">
+                <button class="action-btn" id="variantToggleBtn">View Black Variant</button>
+                
+                <div class="nav-group">
+                    <button class="action-btn" id="prevBtn">Prev</button>
+                    <button class="action-btn" id="nextBtn">Next</button>
+                </div>
+
+                <button class="action-btn" id="selectBtn">Select</button>
+            </nav>
+        </div>
+
+        <div id="productView" class="view hidden">
+            <main class="main-content">
+                <div class="slogan-container">
+                    <div class="slogan-text" id="productSlogan">THOT DAUGHTER</div>
+                </div>
+                
+                <div class="price-tag">$50 AUD</div>
+
+                <div class="size-selector">
+                    <button class="size-btn">XS</button>
+                    <button class="size-btn active">S</button>
+                    <button class="size-btn">M</button>
+                </div>
+            </main>
+
+            <nav class="controls centered">
+                <button class="action-btn" id="backBtn">Back</button>
+                <button class="action-btn" id="addToCartBtn">Add to Cart</button>
+            </nav>
+        </div>
+
+        <div id="blogView" class="blog-view-container hidden">
+            <article class="blog-article">
+                <h1>Nobody Dances Anymore. <span class="blog-subtitle">The Panopticon Effect.</span></h1>
+
+                <p>WSJ, posted an article about artists like Kaytranada and Tyler The Creator publicly calling out the increasing static crowds during live Performances. Now, in the article that I just ripped that from, they cite that smartphones dominate our social lives, and many young concertgoers and club patrons are choosing stillness over dancing and feeling free, out of fear that they’ll be clipped on social media.</p>
+
+                <p>Worried that moments of them unleashing their freak could be captured on camera immortalising them in shame. That’s what the article suggests. I’m not saying that’s exactly true for every party goer, but I’d like to draw your attention to something called the panopticon effect. Now, what is the panopticon effect? The Panopticon effect is a psychological phenomenon where people alter their behavior and self-regulate because they believe they might be watched, even if they aren't being directly observed at all times. Now, the 24/7 surveillance state, 1984 Orwellian-ass society that we live in definitely has impacted the way Gen Z experiences these shared spaces.</p>
+
+                <p>I’m seeing it everywhere. I went to Deftones in Brisbane for the first night show, and for a band that rarely comes to Australia and may never come back, It was shocking to see that I was the only guy letting loose. Yes, all the emo goth kids were in their makeup and dark clothes, standing next to me in my Ralph Lauren polo and Timbs, yet I was the only one headbanging. Now I am probably the biggest known fan of Deftones, at least in the Southern Hemisphere so I am not going to blame or hate on anyone for not loving it as much as me I couldn’t use my neck or back for a week).</p>
+
+                <p>Maybe they’re just not that popular in Brissy? But I would like to declare that the overall consensus that I got from other people was that the crowd was dead. Crowds dying directly because of social media? I don’t know, however clubs are shutting down in the UK every week, and more and more of us are going sober.</p>
+
+                <blockquote>“400 clubs have closed in Britain – more than a third of the total number.”</blockquote>
+
+                <p>Now, I don’t know if that means party culture is on the way out. Considering we’ve had things like the brat summer and Gen Z reportedly spending more on experiences as opposed to things, I think what’s really occurring is that we are becoming more socially reserved creatures on average. Close-friends on Instagram is the perfect example of big social media acknowledging and optimising for “quieter” avenues for ones to express themselves in hopes that their expressing themselves would keep them on the platform longer.</p>
+
+                <p>But I think opening up more avenues for quiet expression, while valuable to those who do not wish to lead a public facing life. Also, unfortunately, allows for us to be more curated and more perfect on our social media accounts (which hold more weight in the real world every year). For some people, that’s a great thing, and I think they should definitely, still have access and control over the ways they wish to express themselves. But I do believe that inherently creates a culture where we do not share the most authentic things about ourselves, a world where expression and vulnerability are accepted and championed.</p>
+
+                <p>I need people to be dancing for me to be able to feel comfortable enough to join in, to feel the rich, euphoric, endorphin-producing experience of a good boogie. If the dance culture dries up, I’m likely going with it and it’s happening in a lot more ways than just dancing. I am not a fearless leader (despite my Deftones experience), but observing this decline does make me believe that it’s a symptom of a greater problem. Dancing isn’t the only thing the panopticon effect is limiting.</p>
+
+                <h2>Matching Your Own Freak.</h2>
+
+                <p>I believe, in an all serious way, that nobody is normal, that normal doesn’t exist, and if you’re on anyone’s close friend's story, you will find that turned out to be true. When vulnerable, when boundaries are diminished, any human being you meet is undoubtedly more bizarre, more fucked up, and more complicated than you would ever imagine.</p>
+
+                <blockquote>See Sonder: Sonder is the profound realisation that every random passerby is living a life as vivid, complex, and central to them as yours is to You. Obviously, we are social animals, and we live in environments where Appeasing social norms does wonders in promoting cohesion.</blockquote>
+
+                <p>But when the scales tip too far in the wrong direction, we have a generation of people who no longer have fun, who no longer have the ability to match their own freak, who no longer have access to expressing themselves in the true and honest ways that actually form connections. I think authentic expression is one of the key ingredients of a great life because it directly influences the environment that you live in, no matter how big or how small, in your favour. You get out of what you put into life, so to speak. In a real-life example from my life again, sorry for being so self indulgent, I have been shitposting like crazy on my Instagram story recently.</p>
+
+                <p>Just random Twitter-esque text posts in create mode, riffing jokes, or sharing my genuine analysis and music breakdowns on pieces of music that inspires or moves me.</p>
+
+                <p>Now, obviously, people were very confused by the sudden switch in my social media usage. Some people thought I was crazy, some people I thought I was cranking too much Ritalin. But amongst that loud minority that expressed concern with my behaviour, a lot of people, and I mean people I would never expect, genuinely received these posts positively as fuck. I’ve never had so many people trying to connect with me over things that I actually cared about.</p>
+
+                <p>I’ve realised time and time again, through many different forms, that truth, honesty, and vulnerability are one of mankind’s greatest throughlines for success. In vulnerability, in honesty, in truth, one can extrapolate their own humanity from another and that breeds connection. It opens me up to more friendships. It’s opened me up to more conversations about things that I actually want to talk about. All I had to do was just say what was on my mind, confidently while believing what I said had merit and value to the conversation inherently restructures the way it is delivered/received. Whether that be via text or in conversation, inherent self-belief and confident expression resonate with people positively, much like how, when we see someone dancing beautifully, it elicits this sensation within Us.</p>
+
+                <p>I don’t know about you guys, but when I see a woman dancing, and she’s killing that shit, it doesn’t even have to be sultry in nature to absolutely engulf me.</p>
+
+                <p>There’s something so sexy, not necessarily about the specific movements and poses, but about this complete absorption of self. Connecting your mind and body to deliver a kinetic form of communication that elicits emotion in others.</p>
+
+                <p>The same sort of thing can be shown through music, or essentially any art form. Me just drinking a coffee in the morning, listening to my favourite songs, and writing a couple of riffy bits to post on my Instagram story allowed people to connect with me and engage with me about my personal interests and passions. This taught me that embracing my own freak, and really taking myself seriously about the things I cared about, wouldn’t isolate and alienate me because I am different. In fact, it would do quite the opposite.</p>
+
+                <p>Authentic, honest expression rewarded me and others. Offering a unique (to you) perspective breaks social monotony and allows someone to experience fresh information that stimulates their brain and the way they think. They then engage with me, and I get to have a conversation about something I’m highly passionate about, which validates me, makes me feel seen and cared about.</p>
+
+                <p>That just shows to me that it is a clear win-win situation. Matching your own freak is essential for your relationship with yourself and your relationship with others. In fact, I would go as far to say that it impacts your relationship with the world and completely reshapes how you’re able to observe or even create beauty in day-to-day actions.</p>
+
+                <p>Giving yourself control, through agency and autonomy of thought and expression, builds your world in your favour. So what I’m trying to say is I really want you guys to put yourselves out there. I really want to see the rarest, truest form of anyone reading this, because that’s always the form of you that I’ve appreciated the most.</p>
+
+                <p>Cheers,<br><br>Charlie</p>
+
+                <div class="blog-footer-controls">
+                    <button class="action-btn" id="returnToStoreBtn">Back to Store</button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        // Data Array
+        const products = [
+            "THOT DAUGHTER",
+            "GAY SON",
+            "THOT SON",
+            "GAY DAUGHTER",
+            "TRADE"
+        ];
+
+        // State Variables
+        let currentIndex = 0;
+        let isBlackVariant = false;
+        let selectedSize = "S";
+        let cartItems = 0;
+
+        // DOM Elements
+        const browseSlogan = document.getElementById('browseSlogan');
+        const productSlogan = document.getElementById('productSlogan');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const variantToggleBtn = document.getElementById('variantToggleBtn');
+        const selectBtn = document.getElementById('selectBtn');
+        const backBtn = document.getElementById('backBtn');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const cartDisplay = document.getElementById('cartDisplay');
+        const browseView = document.getElementById('browseView');
+        const productView = document.getElementById('productView');
+        const sizeBtns = document.querySelectorAll('.size-btn');
+        const bodyElement = document.body;
+
+        // Blog DOM Elements
+        const storeNavBtn = document.getElementById('storeNavBtn');
+        const blogNavBtn = document.getElementById('blogNavBtn');
+        const blogView = document.getElementById('blogView');
+        const returnToStoreBtn = document.getElementById('returnToStoreBtn');
+
+        // Functions
+        function updateSlogan() {
+            browseSlogan.style.opacity = 0;
+            productSlogan.style.opacity = 0;
+            setTimeout(() => {
+                browseSlogan.textContent = products[currentIndex];
+                productSlogan.textContent = products[currentIndex];
+                browseSlogan.style.opacity = 1;
+                productSlogan.style.opacity = 1;
+            }, 200);
+        }
+
+        // Event Listeners for Browsing
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? products.length - 1 : currentIndex - 1;
+            updateSlogan();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === products.length - 1) ? 0 : currentIndex + 1;
+            updateSlogan();
+        });
+
+        // Toggle Styling Variant
+        variantToggleBtn.addEventListener('click', () => {
+            isBlackVariant = !isBlackVariant;
+            if (isBlackVariant) {
+                bodyElement.classList.add('black-variant');
+                variantToggleBtn.textContent = "View White Variant";
+            } else {
+                bodyElement.classList.remove('black-variant');
+                variantToggleBtn.textContent = "View Black Variant";
+            }
+        });
+
+        // View Navigation (Store)
+        selectBtn.addEventListener('click', () => {
+            browseView.classList.add('hidden');
+            productView.classList.remove('hidden');
+            productSlogan.textContent = products[currentIndex]; 
+        });
+
+        backBtn.addEventListener('click', () => {
+            productView.classList.add('hidden');
+            browseView.classList.remove('hidden');
+        });
+
+        // View Navigation (Header Links)
+        storeNavBtn.addEventListener('click', () => {
+            blogView.classList.add('hidden');
+            productView.classList.add('hidden');
+            browseView.classList.remove('hidden');
+        });
+
+        blogNavBtn.addEventListener('click', () => {
+            browseView.classList.add('hidden');
+            productView.classList.add('hidden');
+            blogView.classList.remove('hidden');
+        });
+
+        returnToStoreBtn.addEventListener('click', () => {
+            blogView.classList.add('hidden');
+            browseView.classList.remove('hidden');
+        });
+
+        // Size Selection logic
+        sizeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedSize = btn.textContent;
+            });
+        });
+
+        // Cart Logic
+        addToCartBtn.addEventListener('click', () => {
+            cartItems++;
+            cartDisplay.textContent = `Bag [${cartItems}]`;
+            
+            // Brief visual feedback on the button
+            const originalText = addToCartBtn.textContent;
+            addToCartBtn.textContent = "Added!";
+            setTimeout(() => {
+                addToCartBtn.textContent = originalText;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
