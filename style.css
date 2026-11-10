@@ -1823,22 +1823,79 @@ html[data-theme="light"] .toggle-thumb {
   }
 }
 
-.clean-media-card .video-wrapper {
+.clean-media-card .video-wrapper,
+.clean-media-card .yt-wrapper {
   background-color: #000000;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
-.clean-media-card video {
+.clean-media-card video,
+.clean-media-card .yt-thumb-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  display: block;
 }
 
-.clean-media-card:hover video {
-  transform: scale(1.02);
+.clean-media-card:hover video,
+.clean-media-card:hover .yt-thumb-img {
+  transform: scale(1.04);
+  filter: brightness(1.08);
+}
+
+.clean-media-card .card-view-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding-left: 3px;
+  opacity: 0.85;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.clean-media-card:hover .card-view-badge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.12);
+  background-color: var(--accent-solid);
+  color: var(--accent-text);
+  border-color: var(--accent-solid);
+}
+
+.yt-player-frame {
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  background-color: #000000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  display: block;
+}
+
+.yt-video-frame {
+  width: min(92vw, 980px);
+  aspect-ratio: 16 / 9;
+  max-height: 72vh;
+}
+
+.yt-shorts-frame {
+  height: min(74vh, 660px);
+  aspect-ratio: 9 / 16;
+  max-width: 90vw;
 }
 
 

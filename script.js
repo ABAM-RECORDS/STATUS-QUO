@@ -11,54 +11,76 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const portfolioData = [
     {
-      id: 'clip-01',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQM54qsq0htHnZdYuyEoe65tch8ApF83Sfn44NOok0VPFtt99bKWgdoDoW9UsZRcYVrsmNp2i3sptvMIOfNJJAD6zSNJr3NOJsurGcs.mp4'
+      id: 'yt-01',
+      youtubeId: 'aqnHk99bU10',
+      title: 'Music Video — HEX TASTE (Feat Gordz1)',
+      tag: 'MUSIC VIDEO',
+      isShort: false,
+      thumb: 'https://img.youtube.com/vi/aqnHk99bU10/hqdefault.jpg',
+      url: 'https://youtu.be/aqnHk99bU10'
     },
     {
-      id: 'clip-02',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQOzLVagi5nhQMq9LuCjfjpyCyO4zT4ZWkaN-ozw1k9LLMoaU7iCzRiBu80rD3BtVG2qmpeA0g7Ifx5Zxil-MUYd7pHNOxYE-pK1P2k.mp4'
+      id: 'yt-02',
+      youtubeId: 'xtyk7kYZnIc',
+      title: 'LNC ROULETTE #1 Promo Video',
+      tag: 'PROMO // PRODUCTION',
+      isShort: false,
+      thumb: 'https://img.youtube.com/vi/xtyk7kYZnIc/hqdefault.jpg',
+      url: 'https://youtu.be/xtyk7kYZnIc'
     },
     {
-      id: 'clip-03',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQPOab646wyNT3us49Whj5tzFd2-yxPTnGYDhLkcxn0yduYvGtycm-APyQozK3w348TxIb3I_owbA10wSW6Yz6PZEsuyuTXvO8sOzis.mp4'
+      id: 'yt-03',
+      youtubeId: '2T-4M01uAg4',
+      title: 'Dani Enli Interview',
+      tag: 'INTERVIEW // SHORTS',
+      isShort: true,
+      thumb: 'https://img.youtube.com/vi/2T-4M01uAg4/hqdefault.jpg',
+      url: 'https://youtube.com/shorts/2T-4M01uAg4'
     },
     {
-      id: 'clip-04',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQON_m1HjPIYS2mocmA60Rp5tCs5ydp_cbrA2o2GnyIoZtDPcK3OskZbwtJQc_ZIKjpOs6X5BvH1K6RHfrUMhy1JsWdYCfwKTrsfKg0.mp4'
+      id: 'yt-04',
+      youtubeId: 'qwd63Jl4sDI',
+      title: '4orttune Interview 2025',
+      tag: 'INTERVIEW // SHORTS',
+      isShort: true,
+      thumb: 'https://img.youtube.com/vi/qwd63Jl4sDI/hqdefault.jpg',
+      url: 'https://youtube.com/shorts/qwd63Jl4sDI'
     },
     {
-      id: 'clip-05',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQOF17mDmsV3EtCe0d_pQMrU4wRiyKXIl_5PIxzIG5NZ_bsv4D7QA-WCEK12renYfmThkrv7YIr_bvFNi6fMebaa5KlqktrT-QWQM98.mp4'
+      id: 'yt-05',
+      youtubeId: '3hEzxi0jeSU',
+      title: 'Cult Shotta Interview 2025',
+      tag: 'INTERVIEW // SHORTS',
+      isShort: true,
+      thumb: 'https://img.youtube.com/vi/3hEzxi0jeSU/hqdefault.jpg',
+      url: 'https://youtube.com/shorts/3hEzxi0jeSU'
     },
     {
-      id: 'clip-06',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQNIBYr2r_RHWHi6z0MFXypETa8q2HLhraz6FXI-k08X4h2Cqh1zAPl73R1ipWDfTZmer831wXLWC95Wgk1wLriDb0ZDvHA_FJGyGAQ.mp4'
+      id: 'yt-06',
+      youtubeId: '4VwbKWQOwg8',
+      title: 'Living room callout promo',
+      tag: 'PROMO // SHORTS',
+      isShort: true,
+      thumb: 'https://img.youtube.com/vi/4VwbKWQOwg8/hqdefault.jpg',
+      url: 'https://youtube.com/shorts/4VwbKWQOwg8'
     },
     {
-      id: 'clip-07',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQPiCW1dnMi6EJiwZMvFbPNbxSzFRKoexFKyqpwcSpYwhEfcd9WozjduIv3lLON2mEl_6PkjjeDE68KqZL8LCsG0RPgRStShNXB4OyA.mp4'
+      id: 'yt-07',
+      youtubeId: 'c1pEN37aM_0',
+      title: 'Fokelore interview',
+      tag: 'INTERVIEW // SHORTS',
+      isShort: true,
+      thumb: 'https://img.youtube.com/vi/c1pEN37aM_0/hqdefault.jpg',
+      url: 'https://youtube.com/shorts/c1pEN37aM_0'
     },
     {
-      id: 'clip-08',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQOYdI4FIzRKp5qtnTKIUrYQkwJ8sPsHMFGeg2H6kOX-pxT1aT_WwEwxNcoVX3-p6G0pd-Z29z9VF8iiCP7fXG7r87cfEPptgVTj5XE.mp4'
-    },
-    {
-      id: 'clip-09',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQOczq5cKaxu-Yaf-TSkNj4N6oae3owW77bBN1LkfRGgyu0MfJIqb0kwJr9bqJfDWA8aCGZ9y2N01aPYDtrn2RvT72GnHfamltaaM3g.mp4'
-    },
-    {
-      id: 'clip-10',
-      tag: 'LIVE PRODUCTION',
-      src: './MY%20EVENTS/SaveClip.App_AQNz6_OjiKt-q1RbER-3ZPCZrgrki1c_1DpLO1xp--RSKvb0kjBQBnDXZETQfHZTwf3Li-SmJbAPKP7XL0yRmZs9ki0ZW7iYFHhfqtcNfw.mp4'
+      id: 'yt-08',
+      youtubeId: 'YHPG4uMQc18',
+      title: 'Jonny Chopps Interview',
+      tag: 'INTERVIEW // SHORTS',
+      isShort: true,
+      thumb: 'https://img.youtube.com/vi/YHPG4uMQc18/hqdefault.jpg',
+      url: 'https://youtube.com/shorts/YHPG4uMQc18'
     }
   ];
 
@@ -110,24 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
       link: 'https://cheerscharlie.substack.com/p/the-lost-art-of-surfing-the-web-why',
       excerpt: 'Three ways the internet has evolved. From chaotic hyperlink rabbit holes and serendipitous discovery to the algorithmic monoculture of today.',
       tag: 'INTERNET CULTURE'
-    },
-    {
-      id: 'post-06',
-      title: 'Regret, Acceptance, Change, Growth.',
-      date: 'MAY 19, 2025',
-      readTime: '5 MIN READ',
-      link: 'https://cheerscharlie.substack.com/p/regret-acceptance-change-growth',
-      excerpt: 'Clearing Out The Vault — This one’s from 2024. After this we move from poetry and get analytical as f*ck! Stay tuned for more pseudo intellectualism and gonzo journo stuff.',
-      tag: 'VAULT // MEMOIR'
-    },
-    {
-      id: 'post-07',
-      title: 'It’s Almost Winter, Again.',
-      date: 'MAY 14, 2025',
-      readTime: '4 MIN READ',
-      link: 'https://cheerscharlie.substack.com/p/its-almost-winter-again',
-      excerpt: 'My relationship with the seasons has been a tumultuous one. Seasonal affective shifts, autumn cooling into winter, and the internal reset that arrives with overcast skies.',
-      tag: 'REFLECTIONS'
     }
   ];
 
@@ -189,29 +193,15 @@ document.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('data-id', item.id);
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'Play Live Production Video');
+      card.setAttribute('aria-label', `Play ${item.title}`);
 
       card.innerHTML = `
-        <div class="card-media-wrapper video-wrapper">
-          <video muted playsinline loop preload="metadata">
-            <source src="${item.src}" type="video/mp4">
-          </video>
-          <span class="card-type-badge">▶ VIDEO</span>
-          <span class="card-view-badge" title="Play full size">▶</span>
+        <div class="card-media-wrapper yt-wrapper">
+          <img src="${item.thumb}" alt="${item.title}" loading="lazy" class="yt-thumb-img">
+          <span class="card-type-badge">${item.tag}</span>
+          <div class="card-view-badge" title="Watch Video">▶</div>
         </div>
       `;
-
-      // Video hover preview
-      const vid = card.querySelector('video');
-      card.addEventListener('mouseenter', () => {
-        if (vid) vid.play().catch(() => {});
-      });
-      card.addEventListener('mouseleave', () => {
-        if (vid) {
-          vid.pause();
-          vid.currentTime = 0;
-        }
-      });
 
       // Trigger Lightbox
       card.addEventListener('click', () => {
@@ -261,8 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     if (lbStage) {
-      const vid = lbStage.querySelector('video');
-      if (vid) vid.pause();
+      lbStage.innerHTML = ''; // Instantly halts YouTube playback
     }
   }
 
@@ -271,16 +260,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!item) return;
 
     if (lbCategory) lbCategory.textContent = item.tag;
-    if (lbDownload) lbDownload.href = item.src;
+    if (lbDownload) {
+      lbDownload.href = item.url;
+      lbDownload.textContent = 'Watch on YouTube ↗';
+    }
 
     if (lbStage) {
       lbStage.innerHTML = '';
-      const video = document.createElement('video');
-      video.src = item.src;
-      video.controls = true;
-      video.autoplay = true;
-      video.playsInline = true;
-      lbStage.appendChild(video);
+      const iframe = document.createElement('iframe');
+      iframe.className = item.isShort ? 'yt-player-frame yt-shorts-frame' : 'yt-player-frame yt-video-frame';
+      iframe.src = `https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      iframe.title = item.title;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      lbStage.appendChild(iframe);
     }
   }
 
@@ -307,39 +300,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     6. RENDER BLOG DISPATCHES & FULL ON-SITE READER (RIPPED SUBSTACK)
+     6. RENDER SUBSTACK ARTICLES FEED
      ========================================================================== */
   const articlesFeed = document.getElementById('articles-feed');
-  const feedView = document.getElementById('blog-feed-view');
-  const readerView = document.getElementById('article-reader-view');
-  const readerBackBtn = document.getElementById('reader-back-btn');
-  const readerBackBottomBtn = document.getElementById('reader-back-bottom-btn');
-  const readerTag = document.getElementById('reader-tag');
-  const readerDate = document.getElementById('reader-date');
-  const readerTitle = document.getElementById('reader-title');
-  const readerReadTime = document.getElementById('reader-read-time');
-  const readerBody = document.getElementById('reader-body');
-  const readerSubstackLink = document.getElementById('reader-substack-link');
-  const readerPrevBtn = document.getElementById('reader-prev-btn');
-  const readerNextBtn = document.getElementById('reader-next-btn');
 
-  // Load ripped posts from posts-data.js, fallback to blogPostsData
+  // Load posts from posts-data.js, fallback to blogPostsData
   const activePosts = (typeof SUBSTACK_POSTS !== 'undefined' && Array.isArray(SUBSTACK_POSTS) && SUBSTACK_POSTS.length > 0)
     ? SUBSTACK_POSTS 
     : blogPostsData;
-
-  let currentPostIndex = -1;
 
   function renderArticles() {
     if (!articlesFeed) return;
     articlesFeed.innerHTML = '';
 
-    activePosts.forEach((post, index) => {
+    activePosts.forEach((post) => {
       const card = document.createElement('article');
       card.className = 'article-card';
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', `Read ${post.title}`);
+      card.setAttribute('aria-label', `Read ${post.title} on Substack`);
 
       card.innerHTML = `
         <div>
@@ -353,29 +332,23 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="article-footer">
           <span class="mono-tag">${post.readTime}</span>
           <div class="article-actions-row">
-            <button class="btn-minimal sm open-post-btn" type="button">
-              <span>Read Essay</span>
-              <span class="btn-arrow">→</span>
-            </button>
-            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn-ghost sm" title="Open original on Substack">
-              <span>Substack</span>
+            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn-minimal sm" title="Read on Substack">
+              <span>Read on Substack</span>
               <span class="btn-arrow">↗</span>
             </a>
           </div>
         </div>
       `;
 
-      // Click card to open full ripped article
-      card.addEventListener('click', (e) => {
-        // Don't intercept if clicking direct Substack link
-        if (e.target.closest('a[target="_blank"]')) return;
-        openArticle(index);
+      // Click card to open original essay on Substack
+      card.addEventListener('click', () => {
+        window.open(post.link, '_blank', 'noopener,noreferrer');
       });
 
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openArticle(index);
+          window.open(post.link, '_blank', 'noopener,noreferrer');
         }
       });
 
@@ -383,108 +356,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function openArticle(indexOrSlug) {
-    if (!readerView || !feedView) return;
-
-    let index = -1;
-    if (typeof indexOrSlug === 'number') {
-      index = indexOrSlug;
-    } else if (typeof indexOrSlug === 'string') {
-      const cleanSlug = indexOrSlug.replace(/^#/, '');
-      index = activePosts.findIndex(p => p.id === cleanSlug);
-    }
-
-    if (index < 0 || index >= activePosts.length) return;
-
-    currentPostIndex = index;
-    const post = activePosts[index];
-
-    // Populate Reader View
-    if (readerTag) readerTag.textContent = post.tag;
-    if (readerDate) readerDate.textContent = post.date;
-    if (readerTitle) readerTitle.textContent = post.title;
-    if (readerReadTime) readerReadTime.textContent = post.readTime;
-    if (readerSubstackLink) readerSubstackLink.href = post.link;
-
-    if (readerBody) {
-      // Injected full ripped HTML
-      readerBody.innerHTML = post.body || `<p>${post.excerpt}</p>`;
-    }
-
-    // Configure Prev/Next buttons
-    if (readerPrevBtn) {
-      if (index > 0) {
-        readerPrevBtn.style.display = 'inline-flex';
-        readerPrevBtn.onclick = () => openArticle(index - 1);
-      } else {
-        readerPrevBtn.style.display = 'none';
-      }
-    }
-
-    if (readerNextBtn) {
-      if (index < activePosts.length - 1) {
-        readerNextBtn.style.display = 'inline-flex';
-        readerNextBtn.onclick = () => openArticle(index + 1);
-      } else {
-        readerNextBtn.style.display = 'none';
-      }
-    }
-
-    // Switch view
-    feedView.classList.add('hidden');
-    readerView.classList.add('active');
-    readerView.setAttribute('aria-hidden', 'false');
-
-    // Update URL hash without breaking history
-    if (window.location.hash !== `#${post.id}`) {
-      history.pushState(null, '', `#${post.id}`);
-    }
-
-    // Scroll smoothly to top of article
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-
-  function closeArticle() {
-    if (!readerView || !feedView) return;
-    readerView.classList.remove('active');
-    readerView.setAttribute('aria-hidden', 'true');
-    feedView.classList.remove('hidden');
-
-    // Clear hash
-    if (window.location.hash) {
-      history.pushState(null, '', window.location.pathname);
-    }
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-
-  if (readerBackBtn) readerBackBtn.addEventListener('click', closeArticle);
-  if (readerBackBottomBtn) readerBackBottomBtn.addEventListener('click', closeArticle);
-
-  // Check URL hash on page load
-  function checkHashRoute() {
-    if (window.location.hash) {
-      const slug = window.location.hash.replace(/^#/, '');
-      const match = activePosts.find(p => p.id === slug);
-      if (match) {
-        openArticle(slug);
-      }
-    } else if (readerView && readerView.classList.contains('active')) {
-      closeArticle();
-    }
-  }
-
-  window.addEventListener('hashchange', checkHashRoute);
-
   if (articlesFeed) {
     renderArticles();
-    checkHashRoute();
   }
 
   /* ==========================================================================
