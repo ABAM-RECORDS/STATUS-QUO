@@ -1,552 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>STATUS QUO</title>
-    <style>
-        /* CSS Reset and Lock Scrolling */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHARLIE — Writer, Journalist & Media Personality | Brisbane</title>
+  <meta name="description" content="Charlie — Writer, journalist, and media personality with business development experience in creative industries. Based in Brisbane, Australia.">
 
-        html, body {
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden; 
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #000000;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
+  <!-- Open Graph -->
+  <meta property="og:title" content="CHARLIE — Writer, Journalist & Media Personality | Brisbane">
+  <meta property="og:description" content="Writer, journalist, and media personality with creative business development experience. Brisbane, Australia.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./substack_logo.png">
 
-        /* Black Variant Theme */
-        body.black-variant {
-            background-color: #0a0a0a;
-            color: #ffffff;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
-        /* Layout Container */
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            width: 100%;
-            padding: 2vh 4vw;
-        }
-
-        /* Header Elements */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 10vh;
-            flex-shrink: 0;
-        }
-
-        .logo {
-            font-weight: 900;
-            font-size: clamp(1.8rem, 3.5vw, 3rem);
-            letter-spacing: -2px;
-            text-transform: uppercase;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 3vw;
-        }
-
-        .header-btn {
-            padding: clamp(0.4rem, 1vh, 0.8rem) clamp(1rem, 2vw, 2rem);
-            font-size: clamp(0.7rem, 1vw, 0.9rem);
-        }
-
-        .cart {
-            font-weight: 700;
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        /* View Management */
-        .view {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            width: 100%;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Central Product Display */
-        .main-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 70vh;
-            padding: 0 5vw;
-        }
-
-        .slogan-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slogan-text {
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 900;
-            line-height: 0.85;
-            text-transform: uppercase;
-            text-align: center;
-            word-wrap: break-word;
-            color: #000000;
-            transition: color 0.4s ease, opacity 0.2s ease;
-        }
-
-        body.black-variant .slogan-text {
-            color: #ffffff;
-        }
-
-        .price-tag {
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            font-weight: 800;
-            margin-top: 3vh;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Size Selector */
-        .size-selector {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2vw;
-            margin-top: 4vh;
-        }
-
-        .size-btn {
-            background: none;
-            border: 2px solid #000000;
-            border-radius: 50%;
-            width: clamp(3rem, 5vw, 4rem);
-            height: clamp(3rem, 5vw, 4rem);
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            color: #000000;
-        }
-
-        .size-btn.active {
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        body.black-variant .size-btn {
-            border-color: #ffffff;
-            color: #ffffff;
-        }
-
-        body.black-variant .size-btn.active {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* Controls Section */
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 15vh;
-            padding-bottom: 2vh;
-            flex-shrink: 0;
-        }
-
-        .controls.centered {
-            justify-content: center;
-            gap: 2vw;
-        }
-
-        .action-btn {
-            background: none;
-            border: 2px solid #000000;
-            border-radius: 50px; 
-            padding: clamp(0.8rem, 2vh, 1.2rem) clamp(1.5rem, 3vw, 3rem);
-            font-size: clamp(0.8rem, 1.2vw, 1rem);
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            color: #000000;
-        }
-
-        body.black-variant .action-btn {
-            border-color: #ffffff;
-            color: #ffffff;
-        }
-
-        .action-btn:hover, .action-btn:active {
-            background-color: #000000;
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-
-        body.black-variant .action-btn:hover, body.black-variant .action-btn:active {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .nav-group {
-            display: flex;
-            gap: 1vw;
-        }
-
-        /* Blog Section */
-        .blog-view-container {
-            display: block; 
-            width: 100%;
-            height: 90vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch; 
-            padding: 2vh 5vw 10vh 5vw;
-        }
-
-        .blog-article {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        .blog-article h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 900;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .blog-article .blog-subtitle {
-            font-size: 0.55em;
-            font-weight: 700;
-            display: block;
-            margin-top: 0.5rem;
-            color: #555;
-        }
-
-        body.black-variant .blog-article .blog-subtitle {
-            color: #aaa;
-        }
-
-        .blog-article h2 {
-            font-size: 1.5rem;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        .blog-article p {
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-article blockquote {
-            font-size: 1.3rem;
-            font-style: italic;
-            border-left: 4px solid #000000;
-            padding-left: 1.5rem;
-            margin: 2.5rem 0;
-            font-weight: 700;
-        }
-
-        body.black-variant .blog-article blockquote {
-            border-left-color: #ffffff;
-        }
-
-        .blog-footer-controls {
-            margin-top: 4rem;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        /* Mobile Optimisation */
-        @media (max-width: 768px) {
-            .controls {
-                flex-direction: column;
-                justify-content: space-around;
-                height: 25vh;
-            }
-            .controls.centered {
-                flex-direction: column;
-            }
-            .slogan-text {
-                font-size: clamp(2.5rem, 12vw, 4rem);
-            }
-            .size-selector {
-                gap: 5vw;
-            }
-            .size-btn {
-                width: clamp(3.5rem, 15vw, 4.5rem);
-                height: clamp(3.5rem, 15vw, 4.5rem);
-            }
-            .nav-group {
-                gap: 4vw;
-            }
-            .action-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            .header-right {
-                gap: 5vw;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body data-page="home">
 
-    <div class="container">
-        <header>
-            <div class="logo">STATUS QUO</div>
-            <div class="header-right">
-                <button class="action-btn header-btn" id="storeNavBtn">Store</button>
-                <button class="action-btn header-btn" id="blogNavBtn">Blog</button>
-                <div class="cart" id="cartDisplay">Bag [0]</div>
-            </div>
-        </header>
+  <!-- Sticky Minimal Navigation -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="./index.html" class="brand-link" aria-label="Status Quo Home">
+        <span class="brand-logo-text">STATUS QUO<span class="dot">.</span></span>
+        <span class="brand-sub">BY CHARLIE</span>
+      </a>
 
-        <div id="browseView" class="view">
-            <main class="main-content">
-                <div class="slogan-container">
-                    <div class="slogan-text" id="browseSlogan">THOT DAUGHTER</div>
-                </div>
-            </main>
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html#about" class="nav-link active">About</a></li>
+          <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="./blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
 
-            <nav class="controls">
-                <button class="action-btn" id="variantToggleBtn">View Black Variant</button>
-                
-                <div class="nav-group">
-                    <button class="action-btn" id="prevBtn">Prev</button>
-                    <button class="action-btn" id="nextBtn">Next</button>
-                </div>
+      <div class="nav-actions">
+        <!-- Substack Outlink -->
+        <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-pill-btn" title="Visit Cheers Charlie Substack">
+          <span class="substack-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+            </svg>
+          </span>
+          <span class="substack-text">Substack</span>
+        </a>
 
-                <button class="action-btn" id="selectBtn">Select</button>
-            </nav>
-        </div>
+        <!-- Black Mode / White Mode Switch -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Black/White Theme" title="Toggle Black/White Mode (Press 'T')">
+          <span class="theme-mode-label dark-label">BLK</span>
+          <div class="toggle-slider">
+            <span class="toggle-thumb"></span>
+          </div>
+          <span class="theme-mode-label light-label">WHT</span>
+        </button>
 
-        <div id="productView" class="view hidden">
-            <main class="main-content">
-                <div class="slogan-container">
-                    <div class="slogan-text" id="productSlogan">THOT DAUGHTER</div>
-                </div>
-                
-                <div class="price-tag">$50 AUD</div>
-
-                <div class="size-selector">
-                    <button class="size-btn">XS</button>
-                    <button class="size-btn active">S</button>
-                    <button class="size-btn">M</button>
-                </div>
-            </main>
-
-            <nav class="controls centered">
-                <button class="action-btn" id="backBtn">Back</button>
-                <button class="action-btn" id="addToCartBtn">Add to Cart</button>
-            </nav>
-        </div>
-
-        <div id="blogView" class="blog-view-container hidden">
-            <article class="blog-article">
-                <h1>Nobody Dances Anymore. <span class="blog-subtitle">The Panopticon Effect.</span></h1>
-
-                <p>WSJ, posted an article about artists like Kaytranada and Tyler The Creator publicly calling out the increasing static crowds during live Performances. Now, in the article that I just ripped that from, they cite that smartphones dominate our social lives, and many young concertgoers and club patrons are choosing stillness over dancing and feeling free, out of fear that they’ll be clipped on social media.</p>
-
-                <p>Worried that moments of them unleashing their freak could be captured on camera immortalising them in shame. That’s what the article suggests. I’m not saying that’s exactly true for every party goer, but I’d like to draw your attention to something called the panopticon effect. Now, what is the panopticon effect? The Panopticon effect is a psychological phenomenon where people alter their behavior and self-regulate because they believe they might be watched, even if they aren't being directly observed at all times. Now, the 24/7 surveillance state, 1984 Orwellian-ass society that we live in definitely has impacted the way Gen Z experiences these shared spaces.</p>
-
-                <p>I’m seeing it everywhere. I went to Deftones in Brisbane for the first night show, and for a band that rarely comes to Australia and may never come back, It was shocking to see that I was the only guy letting loose. Yes, all the emo goth kids were in their makeup and dark clothes, standing next to me in my Ralph Lauren polo and Timbs, yet I was the only one headbanging. Now I am probably the biggest known fan of Deftones, at least in the Southern Hemisphere so I am not going to blame or hate on anyone for not loving it as much as me I couldn’t use my neck or back for a week).</p>
-
-                <p>Maybe they’re just not that popular in Brissy? But I would like to declare that the overall consensus that I got from other people was that the crowd was dead. Crowds dying directly because of social media? I don’t know, however clubs are shutting down in the UK every week, and more and more of us are going sober.</p>
-
-                <blockquote>“400 clubs have closed in Britain – more than a third of the total number.”</blockquote>
-
-                <p>Now, I don’t know if that means party culture is on the way out. Considering we’ve had things like the brat summer and Gen Z reportedly spending more on experiences as opposed to things, I think what’s really occurring is that we are becoming more socially reserved creatures on average. Close-friends on Instagram is the perfect example of big social media acknowledging and optimising for “quieter” avenues for ones to express themselves in hopes that their expressing themselves would keep them on the platform longer.</p>
-
-                <p>But I think opening up more avenues for quiet expression, while valuable to those who do not wish to lead a public facing life. Also, unfortunately, allows for us to be more curated and more perfect on our social media accounts (which hold more weight in the real world every year). For some people, that’s a great thing, and I think they should definitely, still have access and control over the ways they wish to express themselves. But I do believe that inherently creates a culture where we do not share the most authentic things about ourselves, a world where expression and vulnerability are accepted and championed.</p>
-
-                <p>I need people to be dancing for me to be able to feel comfortable enough to join in, to feel the rich, euphoric, endorphin-producing experience of a good boogie. If the dance culture dries up, I’m likely going with it and it’s happening in a lot more ways than just dancing. I am not a fearless leader (despite my Deftones experience), but observing this decline does make me believe that it’s a symptom of a greater problem. Dancing isn’t the only thing the panopticon effect is limiting.</p>
-
-                <h2>Matching Your Own Freak.</h2>
-
-                <p>I believe, in an all serious way, that nobody is normal, that normal doesn’t exist, and if you’re on anyone’s close friend's story, you will find that turned out to be true. When vulnerable, when boundaries are diminished, any human being you meet is undoubtedly more bizarre, more fucked up, and more complicated than you would ever imagine.</p>
-
-                <p> <blockquote>Sonder: Sonder is the profound realisation that every random passerby is living a life as vivid, complex, and central to them as yours is to You.</blockquote> Obviously, we are social animals, and we live in environments where Appeasing social norms does wonders in promoting cohesion.</p>
-
-                <p>But when the scales tip too far in the wrong direction, we have a generation of people who no longer have fun, who no longer have the ability to match their own freak, who no longer have access to expressing themselves in the true and honest ways that actually form connections. I think authentic expression is one of the key ingredients of a great life because it directly influences the environment that you live in, no matter how big or how small, in your favour. You get out of what you put into life, so to speak. In a real-life example from my life again, sorry for being so self indulgent, I have been shitposting like crazy on my Instagram story recently.</p>
-
-                <p>Just random Twitter-esque text posts in create mode, riffing jokes, or sharing my genuine analysis and music breakdowns on pieces of music that inspires or moves me.</p>
-
-                <p>Now, obviously, people were very confused by the sudden switch in my social media usage. Some people thought I was crazy, some people I thought I was cranking too much Ritalin. But amongst that loud minority that expressed concern with my behaviour, a lot of people, and I mean people I would never expect, genuinely received these posts positively as fuck. I’ve never had so many people trying to connect with me over things that I actually cared about.</p>
-
-                <p>I’ve realised time and time again, through many different forms, that truth, honesty, and vulnerability are one of mankind’s greatest throughlines for success. In vulnerability, in honesty, in truth, one can extrapolate their own humanity from another and that breeds connection. It opens me up to more friendships. It’s opened me up to more conversations about things that I actually want to talk about. All I had to do was just say what was on my mind, confidently while believing what I said had merit and value to the conversation inherently restructures the way it is delivered/received. Whether that be via text or in conversation, inherent self-belief and confident expression resonate with people positively, much like how, when we see someone dancing beautifully, it elicits this sensation within Us.</p>
-
-                <p>I don’t know about you guys, but when I see a woman dancing, and she’s killing that shit, it doesn’t even have to be sultry in nature to absolutely engulf me.</p>
-
-                <p>There’s something so sexy, not necessarily about the specific movements and poses, but about this complete absorption of self. Connecting your mind and body to deliver a kinetic form of communication that elicits emotion in others.</p>
-
-                <p>The same sort of thing can be shown through music, or essentially any art form. Me just drinking a coffee in the morning, listening to my favourite songs, and writing a couple of riffy bits to post on my Instagram story allowed people to connect with me and engage with me about my personal interests and passions. This taught me that embracing my own freak, and really taking myself seriously about the things I cared about, wouldn’t isolate and alienate me because I am different. In fact, it would do quite the opposite.</p>
-
-                <p>Authentic, honest expression rewarded me and others. Offering a unique (to you) perspective breaks social monotony and allows someone to experience fresh information that stimulates their brain and the way they think. They then engage with me, and I get to have a conversation about something I’m highly passionate about, which validates me, makes me feel seen and cared about.</p>
-
-                <p>That just shows to me that it is a clear win-win situation. Matching your own freak is essential for your relationship with yourself and your relationship with others. In fact, I would go as far to say that it impacts your relationship with the world and completely reshapes how you’re able to observe or even create beauty in day-to-day actions.</p>
-
-                <p>Giving yourself control, through agency and autonomy of thought and expression, builds your world in your favour. So what I’m trying to say is I really want you guys to put yourselves out there. I really want to see the rarest, truest form of anyone reading this, because that’s always the form of you that I’ve appreciated the most.</p>
-
-                <p>Cheers,<br><br>Charlie</p>
-
-                <div class="blog-footer-controls">
-                    <button class="action-btn" id="returnToStoreBtn">Back to Store</button>
-                </div>
-            </article>
-        </div>
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <script>
-        // Data Array
-        const products = [
-            "THOT DAUGHTER",
-            "GAY SON",
-            "THOT SON",
-            "GAY DAUGHTER",
-            "TRADE"
-        ];
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <ul class="mobile-nav-links">
+        <li><a href="./index.html#about" class="mobile-link">About</a></li>
+        <li><a href="./index.html#contact" class="mobile-link">Contact</a></li>
+        <li><a href="./portfolio.html" class="mobile-link">Portfolio</a></li>
+        <li><a href="./blog.html" class="mobile-link">Blog</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="btn-primary full-width">
+          Read on Substack ↗
+        </a>
+      </div>
+    </div>
+  </div>
 
-        // State Variables
-        let currentIndex = 0;
-        let isBlackVariant = false;
-        let selectedSize = "S";
-        let cartItems = 0;
+  <main>
+    <!-- HERO INTRO -->
+    <section class="hero-section hero-home" id="hero">
+      <div class="hero-container">
+        <div class="hero-meta-bar">
+          <span class="status-live-indicator">
+            <span class="pulsing-dot-green"></span>
+            BASED IN BRISBANE, AUSTRALIA
+          </span>
+          <span class="hero-location mono-tag">CREATIVE BUSINESS DEV</span>
+          <span class="hero-issue mono-tag">STATUS QUO // 2026</span>
+        </div>
 
-        // DOM Elements
-        const browseSlogan = document.getElementById('browseSlogan');
-        const productSlogan = document.getElementById('productSlogan');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const variantToggleBtn = document.getElementById('variantToggleBtn');
-        const selectBtn = document.getElementById('selectBtn');
-        const backBtn = document.getElementById('backBtn');
-        const addToCartBtn = document.getElementById('addToCartBtn');
-        const cartDisplay = document.getElementById('cartDisplay');
-        const browseView = document.getElementById('browseView');
-        const productView = document.getElementById('productView');
-        const sizeBtns = document.querySelectorAll('.size-btn');
-        const bodyElement = document.body;
+        <div class="hero-title-wrap">
+          <h1 class="hero-headline">
+            MEET CHARLIE.
+          </h1>
+        </div>
 
-        // Blog DOM Elements
-        const storeNavBtn = document.getElementById('storeNavBtn');
-        const blogNavBtn = document.getElementById('blogNavBtn');
-        const blogView = document.getElementById('blogView');
-        const returnToStoreBtn = document.getElementById('returnToStoreBtn');
+        <div class="hero-intro-box">
+          <p class="lead-text">
+            Writer, journalist, and media personality with business development experience across creative industries. Based in <strong>Brisbane, Australia</strong>. Publishing cultural commentary on <em>Status Quo.</em> and driving independent creative productions.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#about" class="btn-minimal">
+              <span>Read About</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+            <a href="#contact" class="btn-outline">
+              <span>Contact Directly</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+            <a href="./portfolio.html" class="btn-outline">
+              <span>Explore Portfolio</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <a href="./blog.html" class="btn-ghost">
+              <span>Read Blog</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
 
-        // Functions
-        function updateSlogan() {
-            browseSlogan.style.opacity = 0;
-            productSlogan.style.opacity = 0;
-            setTimeout(() => {
-                browseSlogan.textContent = products[currentIndex];
-                productSlogan.textContent = products[currentIndex];
-                browseSlogan.style.opacity = 1;
-                productSlogan.style.opacity = 1;
-            }, 200);
-        }
+        <!-- Marquee Ticker -->
+        <div class="ticker-strip" aria-hidden="true">
+          <div class="ticker-content">
+            <span>WRITER</span>
+            <span class="ticker-sep">/</span>
+            <span>JOURNALIST</span>
+            <span class="ticker-sep">/</span>
+            <span>MEDIA PERSONALITY</span>
+            <span class="ticker-sep">/</span>
+            <span>BUSINESS DEVELOPMENT</span>
+            <span class="ticker-sep">/</span>
+            <span>CREATIVE INDUSTRIES</span>
+            <span class="ticker-sep">/</span>
+            <span>LIVE PRODUCTIONS</span>
+            <span class="ticker-sep">/</span>
+            <span>STATUS QUO. DISPATCHES</span>
+            <span class="ticker-sep">/</span>
+            <span>BRISBANE BASED</span>
+            <span class="ticker-sep">/</span>
+            <span>WRITER</span>
+            <span class="ticker-sep">/</span>
+            <span>JOURNALIST</span>
+            <span class="ticker-sep">/</span>
+            <span>MEDIA PERSONALITY</span>
+            <span class="ticker-sep">/</span>
+            <span>CREATIVE STRATEGY</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Event Listeners for Browsing
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex === 0) ? products.length - 1 : currentIndex - 1;
-            updateSlogan();
-        });
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-meta">
+            <span class="section-tag mono-tag">BIO & MANIFESTO</span>
+            <span class="section-tag mono-tag">WHO IS CHARLIE</span>
+          </div>
+          <h2 class="section-title">ABOUT.</h2>
+        </div>
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex === products.length - 1) ? 0 : currentIndex + 1;
-            updateSlogan();
-        });
+        <div class="about-grid">
+          <!-- Portrait Frame -->
+          <div class="about-portrait-frame">
+            <div class="portrait-wrap">
+              <img src="./charlie_avatar.png" alt="Charlie - Portrait" class="portrait-img">
+              <div class="portrait-overlay">
+                <span class="mono-tag">CHARLIE // @CHEERS.CHARLIEE</span>
+              </div>
+            </div>
+            <div class="portrait-caption">
+              <span class="mono-tag">“A human mind w/ human-like thoughts.”</span>
+            </div>
+          </div>
 
-        // Toggle Styling Variant
-        variantToggleBtn.addEventListener('click', () => {
-            isBlackVariant = !isBlackVariant;
-            if (isBlackVariant) {
-                bodyElement.classList.add('black-variant');
-                variantToggleBtn.textContent = "View White Variant";
-            } else {
-                bodyElement.classList.remove('black-variant');
-                variantToggleBtn.textContent = "View Black Variant";
-            }
-        });
+          <!-- About Narrative -->
+          <div class="about-content">
+            <h3 class="about-statement">
+              My name is Charlie I'm a writer, journalist, and media personality with business development experience in creative industries.
+            </h3>
+            <div class="about-paragraphs">
+              <p>
+                I use my experience in Writing, Journalism, Content creation and Music production/writing as tools to inform my creative direction and strategy.
+              </p>
+              <p>
+                I operate at the intersection of independent media production, and creative business development and offer consulting in these areas.
+              </p>
+              <p>
+                Through <em>Status Quo.</em>, I deliver unfiltered gonzo journalism, cultural critique, and essays on navigating modern life.
+              </p>
+              <div class="about-experience-block">
+                <p class="experience-heading"><strong>My experience includes:</strong></p>
+                <ul class="about-experience-list">
+                  <li>Creative direction on event promotion campaigns.</li>
+                  <li>Event planning and organising.</li>
+                  <li>The set-up, concept design, and hosting of live-streamed music events.</li>
+                  <li>On-set producer for music videos and productions featuring actors and crew.</li>
+                  <li>Video script writing and conceptualising.</li>
+                  <li>Music production and writing.</li>
+                  <li>Creative and commercial strategy for creative industry start-ups and brands.</li>
+                </ul>
+              </div>
+              <p>
+                Backed by hands-on experience in event production and commercial development within creative sectors, I blend sharp narrative storytelling with practical industry strategy—bridging underground culture and professional execution.
+              </p>
+            </div>
 
-        // View Navigation (Store)
-        selectBtn.addEventListener('click', () => {
-            browseView.classList.add('hidden');
-            productView.classList.remove('hidden');
-            productSlogan.textContent = products[currentIndex]; 
-        });
+            <!-- Spec Grid / Details -->
+            <div class="spec-grid">
+              <div class="spec-item">
+                <span class="spec-label mono-tag">LOCATION</span>
+                <span class="spec-val">Brisbane, Australia</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label mono-tag">DISCIPLINE</span>
+                <span class="spec-val">Writing & Journalism</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label mono-tag">EXPERTISE</span>
+                <span class="spec-val">Creative Business Development</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label mono-tag">PUBLICATION</span>
+                <span class="spec-val">Status Quo. (Substack)</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        backBtn.addEventListener('click', () => {
-            productView.classList.add('hidden');
-            browseView.classList.remove('hidden');
-        });
+        <!-- Section Navigation Teasers -->
+        <div class="pages-teaser-row">
+          <a href="./portfolio.html" class="page-teaser-card">
+            <div class="teaser-meta">
+              <span class="mono-tag">SELECTED WORKS</span>
+              <span class="mono-tag">PRODUCTION VAULT</span>
+            </div>
+            <h3 class="teaser-title">PORTFOLIO →</h3>
+            <p class="teaser-desc">Video content i've written or produced. Live event productions and creative media archive.</p>
+          </a>
 
-        // View Navigation (Header Links)
-        storeNavBtn.addEventListener('click', () => {
-            blogView.classList.add('hidden');
-            productView.classList.add('hidden');
-            browseView.classList.remove('hidden');
-        });
+          <a href="./blog.html" class="page-teaser-card">
+            <div class="teaser-meta">
+              <span class="mono-tag">ESSAYS & DISPATCHES</span>
+              <span class="mono-tag">STATUS QUO.</span>
+            </div>
+            <h3 class="teaser-title">BLOG / SUBSTACK →</h3>
+            <p class="teaser-desc">Status Quo. essays on Gen-Z culture, philosophy, nightlife, and internet evolutions.</p>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        blogNavBtn.addEventListener('click', () => {
-            browseView.classList.add('hidden');
-            productView.classList.add('hidden');
-            blogView.classList.remove('hidden');
-        });
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-meta">
+            <span class="section-tag mono-tag">REACH OUT</span>
+            <span class="section-tag mono-tag">BRISBANE & ONLINE</span>
+          </div>
+          <h2 class="section-title">CONTACT.</h2>
+        </div>
 
-        returnToStoreBtn.addEventListener('click', () => {
-            blogView.classList.add('hidden');
-            browseView.classList.remove('hidden');
-        });
+        <div class="contact-card">
+          <div class="contact-left">
+            <h3 class="contact-prompt">Let's build something honest.</h3>
+            <p class="contact-desc">
+              Available for journalistic assignments, editorial writing, media appearances, event production consulting, and creative business development.
+            </p>
 
-        // Size Selection logic
-        sizeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                sizeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                selectedSize = btn.textContent;
-            });
-        });
+            <div class="contact-channels">
+              <div class="channel-row">
+                <span class="channel-label mono-tag">LOCATION</span>
+                <span class="channel-static-val">Brisbane, QLD, Australia</span>
+              </div>
+              <div class="channel-row">
+                <span class="channel-label mono-tag">SUBSTACK</span>
+                <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="channel-link">
+                  cheerscharlie.substack.com ↗
+                </a>
+              </div>
+              <div class="channel-row">
+                <span class="channel-label mono-tag">PROFILE</span>
+                <a href="https://www.instagram.com/cheers.charliee/" target="_blank" rel="noopener noreferrer" class="channel-link">
+                  @cheers.charliee ↗
+                </a>
+              </div>
+              <div class="channel-row">
+                <span class="channel-label mono-tag">DIRECT EMAIL</span>
+                <div class="email-copy-wrap">
+                  <a href="mailto:abam.enquiries@gmail.com" id="contact-email" class="channel-link">
+                    abam.enquiries@gmail.com
+                  </a>
+                  <button id="copy-email-btn" class="copy-btn" title="Copy email address">
+                    <span id="copy-btn-text">Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        // Cart Logic
-        addToCartBtn.addEventListener('click', () => {
-            cartItems++;
-            cartDisplay.textContent = `Bag [${cartItems}]`;
-            
-            // Brief visual feedback on the button
-            const originalText = addToCartBtn.textContent;
-            addToCartBtn.textContent = "Added!";
-            setTimeout(() => {
-                addToCartBtn.textContent = originalText;
-            }, 1000);
-        });
-    </script>
+          <div class="contact-right">
+            <div class="inquiry-box">
+              <span class="mono-tag">CURRENT AVAILABILITY</span>
+              <p class="inquiry-status">
+                <span class="pulsing-dot-green"></span>
+                Accepting select writing commissions, media engagements, and creative business development projects for 2026.
+              </p>
+              <div class="inquiry-actions">
+                <a href="mailto:abam.enquiries@gmail.com?subject=Inquiry:%20Writing%20/%20Media%20/%20Business%20Development" class="btn-minimal full-width">
+                  <span>Send Direct Email</span>
+                  <span class="btn-arrow">→</span>
+                </a>
+                <a href="https://cheerscharlie.substack.com/subscribe" target="_blank" rel="noopener noreferrer" class="btn-outline full-width">
+                  <span>Subscribe on Substack</span>
+                  <span class="btn-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-logo-text">STATUS QUO<span class="dot">.</span></span>
+          <p class="footer-tagline">Writer, Journalist & Media Personality. Creative Business Development. Brisbane, Australia.</p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="./index.html#about">About</a>
+          <a href="./index.html#contact">Contact</a>
+          <a href="./portfolio.html">Portfolio</a>
+          <a href="./blog.html">Blog</a>
+          <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer">Substack ↗</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <span>© 2026 STATUS QUO. ALL RIGHTS RESERVED.</span>
+          <span class="footer-sep">•</span>
+          <span id="live-clock" class="mono-tag">BRISBANE TIME: --:--:--</span>
+        </div>
+        <button id="back-to-top" class="back-to-top-btn" title="Back to top">
+          Back to Top ↑
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
 </html>

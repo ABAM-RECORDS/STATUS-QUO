@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO — Status Quo. | Content Written & Produced</title>
+  <meta name="description" content="Video content i've written or produced. Creative productions, live events, and media by Charlie.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PORTFOLIO — Status Quo. | Charlie">
+  <meta property="og:description" content="Video content i've written or produced.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./substack_logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-page="portfolio">
+
+  <!-- Sticky Minimal Navigation -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="./index.html" class="brand-link" aria-label="Status Quo Home">
+        <span class="brand-logo-text">STATUS QUO<span class="dot">.</span></span>
+        <span class="brand-sub">BY CHARLIE</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html#about" class="nav-link">About</a></li>
+          <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="./portfolio.html" class="nav-link active">Portfolio</a></li>
+          <li><a href="./blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Substack Outlink -->
+        <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-pill-btn" title="Visit Cheers Charlie Substack">
+          <span class="substack-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+            </svg>
+          </span>
+          <span class="substack-text">Substack</span>
+        </a>
+
+        <!-- Black Mode / White Mode Switch -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Black/White Theme" title="Toggle Black/White Mode (Press 'T')">
+          <span class="theme-mode-label dark-label">BLK</span>
+          <div class="toggle-slider">
+            <span class="toggle-thumb"></span>
+          </div>
+          <span class="theme-mode-label light-label">WHT</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <ul class="mobile-nav-links">
+        <li><a href="./index.html#about" class="mobile-link">About</a></li>
+        <li><a href="./index.html#contact" class="mobile-link">Contact</a></li>
+        <li><a href="./portfolio.html" class="mobile-link active">Portfolio</a></li>
+        <li><a href="./blog.html" class="mobile-link">Blog</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="btn-primary full-width">
+          Read on Substack ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page-main">
+    <!-- PORTFOLIO SECTION -->
+    <section class="section portfolio-page-section">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-meta">
+            <span class="section-tag mono-tag">SELECTED WORK</span>
+            <span class="section-tag mono-tag">PRODUCTION VAULT</span>
+          </div>
+          <div class="section-title-row">
+            <h1 class="section-title">PORTFOLIO.</h1>
+            <p class="section-subtitle">Video content i've written or produced.</p>
+          </div>
+
+          <!-- Video Controls -->
+          <div class="portfolio-controls">
+            <div class="gallery-info mono-tag">
+              <span>HOVER TO PREVIEW // CLICK TO PLAY FULL SCREEN // <kbd class="kbd">ESC</kbd> TO CLOSE</span>
+            </div>
+            <div class="gallery-info mono-tag">
+              <span>VIDEO PRODUCTIONS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio Media Grid (Clean / No Captions) -->
+        <div class="portfolio-grid portfolio-clean-grid" id="portfolio-grid">
+          <!-- Injected via script.js -->
+        </div>
+
+        <!-- Next / Prev Page Links -->
+        <div class="page-bottom-nav">
+          <a href="./index.html" class="btn-outline">
+            <span class="btn-arrow">←</span>
+            <span>About & Contact</span>
+          </a>
+          <a href="./blog.html" class="btn-minimal">
+            <span>Read Blog / Dispatches</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX MODAL (CLEAN - NO CAPTIONS) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content-box">
+      <!-- Top controls -->
+      <div class="lightbox-topbar">
+        <div class="lightbox-indexer">
+          <span class="lightbox-tag mono-tag" id="lb-category">LIVE PRODUCTION</span>
+        </div>
+        <button id="lb-close" class="lightbox-close-btn" aria-label="Close Lightbox (Esc)">
+          ✕
+        </button>
+      </div>
+
+      <!-- Main Display -->
+      <div class="lightbox-media-viewport">
+        <button id="lb-prev" class="lightbox-nav-btn prev-btn" aria-label="Previous (Left Arrow)">
+          ‹
+        </button>
+
+        <div class="lightbox-media-stage" id="lb-stage">
+          <!-- Dynamic media injected here -->
+        </div>
+
+        <button id="lb-next" class="lightbox-nav-btn next-btn" aria-label="Next (Right Arrow)">
+          ›
+        </button>
+      </div>
+
+      <!-- Clean footer without captions -->
+      <div class="lightbox-footer clean-footer">
+        <span class="mono-tag">LIVE EVENT PRODUCTION // CREATIVE MEDIA</span>
+        <a id="lb-download" href="#" target="_blank" class="lightbox-link mono-tag">Open Media ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-logo-text">STATUS QUO<span class="dot">.</span></span>
+          <p class="footer-tagline">Writer, Journalist & Media Personality. Creative Business Development. Brisbane, Australia.</p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="./index.html#about">About</a>
+          <a href="./index.html#contact">Contact</a>
+          <a href="./portfolio.html">Portfolio</a>
+          <a href="./blog.html">Blog</a>
+          <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer">Substack ↗</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <span>© 2026 STATUS QUO. ALL RIGHTS RESERVED.</span>
+          <span class="footer-sep">•</span>
+          <span id="live-clock" class="mono-tag">BRISBANE TIME: --:--:--</span>
+        </div>
+        <button id="back-to-top" class="back-to-top-btn" title="Back to top">
+          Back to Top ↑
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
