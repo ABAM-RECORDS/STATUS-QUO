@@ -89,15 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const blogPostsData = [
     {
-      id: 'post-01',
-      title: 'Attending A Bible Meet.',
-      date: 'AUG 27, 2026',
-      readTime: '4 MIN READ',
-      link: 'https://cheerscharlie.substack.com/p/attending-a-bible-meet',
-      excerpt: 'A spontaneous journalistic endeavour. Stepping outside the bubble into religious community spaces with an open mind, acute curiosity, and gonzo observation.',
-      tag: 'CULTURE // GONZO'
-    },
-    {
       id: 'post-02',
       title: 'The Price Of Invulnerability.',
       date: 'JUL 23, 2026',
@@ -300,9 +291,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     6. RENDER SUBSTACK ARTICLES FEED
+     6. RENDER SUBSTACK ARTICLES FEED & ON-SITE READER WITH PAYWALL CUTOFF
      ========================================================================== */
   const articlesFeed = document.getElementById('articles-feed');
+  const feedView = document.getElementById('blog-feed-view');
+  const readerView = document.getElementById('article-reader-view');
+  const readerBackBtn = document.getElementById('reader-back-btn');
+  const readerBackBottomBtn = document.getElementById('reader-back-bottom-btn');
+  const readerTag = document.getElementById('reader-tag');
+  const readerDate = document.getElementById('reader-date');
+  const readerTitle = document.getElementById('reader-title');
+  const readerReadTime = document.getElementById('reader-read-time');
+  const readerBody = document.getElementById('reader-body');
+  const readerSubstackLink = document.getElementById('reader-substack-link');
+  const paywallLinkBtn = document.getElementById('paywall-link-btn');
 
   // Load posts from posts-data.js, fallback to blogPostsData
   const activePosts = (typeof SUBSTACK_POSTS !== 'undefined' && Array.isArray(SUBSTACK_POSTS) && SUBSTACK_POSTS.length > 0)
@@ -313,15 +315,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!articlesFeed) return;
     articlesFeed.innerHTML = '';
 
-    activePosts.forEach((post) => {
+    const countEl = document.getElementById('article-count');
+    if (countEl) {
+      countEl.textContent = `${activePosts.length} ESSAYS`;
+    }
+
+    activePosts.forEach((post, index) => {
       const card = document.createElement('article');
       card.className = 'article-card';
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', `Read ${post.title} on Substack`);
+      card.setAttribute('aria-label', `Read ${post.title}`);
 
       card.innerHTML = `
         <div>
+          ${post.image ? `
+            <div class="article-card-image-wrap">
+              <img src="${post.image}" alt="${post.title}" class="article-card-thumb" loading="lazy">
+            </div>
+          ` : ''}
           <div class="article-meta">
             <span class="mono-tag">${post.tag}</span>
             <span class="mono-tag">${post.date}</span>
@@ -332,23 +344,27 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="article-footer">
           <span class="mono-tag">${post.readTime}</span>
           <div class="article-actions-row">
-            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn-minimal sm" title="Read on Substack">
-              <span>Read on Substack</span>
+            <button class="btn-minimal sm" type="button">
+              <span>Read Dispatch</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn-ghost sm" title="Open on Substack" onclick="event.stopPropagation()">
+              <span>Substack</span>
               <span class="btn-arrow">↗</span>
             </a>
           </div>
         </div>
       `;
 
-      // Click card to open original essay on Substack
+      // Open on-site article reader up to paywall
       card.addEventListener('click', () => {
-        window.open(post.link, '_blank', 'noopener,noreferrer');
+        openArticle(index);
       });
 
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          window.open(post.link, '_blank', 'noopener,noreferrer');
+          openArticle(index);
         }
       });
 
@@ -356,8 +372,107 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function openArticle(indexOrSlug) {
+    if (!readerView || !feedView) return;
+
+    let index = -1;
+    if (typeof indexOrSlug === 'number') {
+      index = indexOrSlug;
+    } else if (typeof indexOrSlug === 'string') {
+      const cleanSlug = indexOrSlug.replace(/^#/, '');
+      index = activePosts.findIndex(p => p.id === cleanSlug);
+    }
+
+    if (index < 0 || index >= activePosts.length) return;
+
+    const post = activePosts[index];
+
+    // Populate Reader View
+    if (readerTag) readerTag.textContent = post.tag;
+    if (readerDate) readerDate.textContent = post.date;
+    if (readerTitle) readerTitle.textContent = post.title;
+    if (readerReadTime) readerReadTime.textContent = post.readTime;
+    if (readerSubstackLink) readerSubstackLink.href = post.link;
+    if (paywallLinkBtn) {
+      paywallLinkBtn.href = post.link;
+    }
+
+    if (readerBody) {
+      // Injected body up to paywall cutoff
+      readerBody.innerHTML = post.body || `<p>${post.excerpt}</p>`;
+    }
+
+    // Switch view
+    feedView.classList.add('hidden');
+    readerView.classList.add('active');
+    readerView.setAttribute('aria-hidden', 'false');
+
+    // Update URL hash
+    if (window.location.hash !== `#${post.id}`) {
+      history.pushState(null, '', `#${post.id}`);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function closeArticle() {
+    if (!readerView || !feedView) return;
+    readerView.classList.remove('active');
+    readerView.setAttribute('aria-hidden', 'true');
+    feedView.classList.remove('hidden');
+
+    if (window.location.hash) {
+      history.pushState(null, '', window.location.pathname);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  if (readerBackBtn) readerBackBtn.addEventListener('click', closeArticle);
+  if (readerBackBottomBtn) readerBackBottomBtn.addEventListener('click', closeArticle);
+
+  function checkHashRoute() {
+    if (window.location.hash) {
+      const slug = window.location.hash.replace(/^#/, '');
+      const match = activePosts.find(p => p.id === slug);
+      if (match) {
+        openArticle(slug);
+      }
+    } else if (readerView && readerView.classList.contains('active')) {
+      closeArticle();
+    }
+  }
+
+  window.addEventListener('hashchange', checkHashRoute);
+
   if (articlesFeed) {
     renderArticles();
+    checkHashRoute();
+  }
+
+  /* ==========================================================================
+     7. PORTFOLIO REVEAL TOGGLE (ON MEET CHARLIE PAGE)
+     ========================================================================== */
+  const togglePortfolioBtn = document.getElementById('toggle-portfolio-btn');
+  const portfolioSection = document.getElementById('portfolio-section');
+  if (togglePortfolioBtn && portfolioSection) {
+    togglePortfolioBtn.addEventListener('click', () => {
+      const isVisible = portfolioSection.classList.contains('active');
+      if (isVisible) {
+        portfolioSection.classList.remove('active');
+        togglePortfolioBtn.setAttribute('aria-expanded', 'false');
+        togglePortfolioBtn.querySelector('span:first-child').textContent = 'Explore Video Portfolio';
+        const arrow = togglePortfolioBtn.querySelector('.btn-arrow');
+        if (arrow) arrow.textContent = '↓';
+      } else {
+        portfolioSection.classList.add('active');
+        togglePortfolioBtn.setAttribute('aria-expanded', 'true');
+        togglePortfolioBtn.querySelector('span:first-child').textContent = 'Hide Video Portfolio';
+        const arrow = togglePortfolioBtn.querySelector('.btn-arrow');
+        if (arrow) arrow.textContent = '↑';
+        portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   }
 
   /* ==========================================================================

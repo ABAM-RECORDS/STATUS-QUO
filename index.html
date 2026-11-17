@@ -3,23 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARLIE — Writer, Journalist & Media Personality | Brisbane</title>
-  <meta name="description" content="Charlie — Writer, journalist, and media personality with business development experience in creative industries. Based in Brisbane, Australia.">
+  <title>STATUS QUO. — A Publication By Charlie</title>
+  <meta name="description" content="Status Quo. by Charlie — Cultural critique, unfiltered gonzo journalism, and essays on navigating modern life. Based in Brisbane, Australia.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="CHARLIE — Writer, Journalist & Media Personality | Brisbane">
-  <meta property="og:description" content="Writer, journalist, and media personality with creative business development experience. Brisbane, Australia.">
+  <meta property="og:title" content="STATUS QUO. — A Publication By Charlie">
+  <meta property="og:description" content="Cultural critique, unfiltered gonzo journalism, and essays on navigating modern life. Brisbane, Australia.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="./substack_logo.png">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="./style.css">
 </head>
-<body data-page="home">
+<body data-page="blog">
 
   <!-- Sticky Minimal Navigation -->
   <header class="site-header" id="header">
@@ -28,15 +23,6 @@
         <span class="brand-logo-text">STATUS QUO<span class="dot">.</span></span>
         <span class="brand-sub">BY CHARLIE</span>
       </a>
-
-      <nav class="main-nav" aria-label="Main Navigation">
-        <ul class="nav-links">
-          <li><a href="./index.html#about" class="nav-link active">About</a></li>
-          <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
-          <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
-          <li><a href="./blog.html" class="nav-link">Blog</a></li>
-        </ul>
-      </nav>
 
       <div class="nav-actions">
         <!-- Substack Outlink -->
@@ -57,249 +43,169 @@
           </div>
           <span class="theme-mode-label light-label">WHT</span>
         </button>
-
-        <!-- Mobile Menu Toggle -->
-        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Open Navigation Menu">
-          <span></span>
-          <span></span>
-        </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
-    <div class="mobile-drawer-inner">
-      <ul class="mobile-nav-links">
-        <li><a href="./index.html#about" class="mobile-link">About</a></li>
-        <li><a href="./index.html#contact" class="mobile-link">Contact</a></li>
-        <li><a href="./portfolio.html" class="mobile-link">Portfolio</a></li>
-        <li><a href="./blog.html" class="mobile-link">Blog</a></li>
-      </ul>
-      <div class="mobile-drawer-footer">
-        <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="btn-primary full-width">
-          Read on Substack ↗
-        </a>
-      </div>
-    </div>
-  </div>
+  <main class="page-main">
+    <div class="section-container">
 
-  <main>
-    <!-- HERO INTRO -->
-    <section class="hero-section hero-home" id="hero">
-      <div class="hero-container">
-        <div class="hero-meta-bar">
-          <span class="status-live-indicator">
-            BASED IN BRISBANE, AUSTRALIA
-          </span>
-          <span class="hero-location mono-tag">CREATIVE BUSINESS DEV</span>
-          <span class="hero-issue mono-tag">STATUS QUO // 2026</span>
-        </div>
-
-        <div class="hero-title-wrap">
-          <h1 class="hero-headline">
-            MEET CHARLIE.
-          </h1>
-        </div>
-
-        <div class="hero-intro-box">
-          <p class="lead-text">
-            Writer, journalist, and media personality with business development experience across creative industries. Based in <strong>Brisbane, Australia</strong>. Publishing cultural commentary on <em>Status Quo.</em> and driving independent creative productions.
-          </p>
-          <div class="hero-cta-group">
-            <a href="#about" class="btn-minimal">
-              <span>Read About</span>
-              <span class="btn-arrow">↓</span>
-            </a>
-            <a href="#contact" class="btn-outline">
-              <span>Contact Directly</span>
-              <span class="btn-arrow">↓</span>
-            </a>
-            <a href="./portfolio.html" class="btn-outline">
-              <span>Explore Portfolio</span>
-              <span class="btn-arrow">→</span>
-            </a>
-            <a href="./blog.html" class="btn-ghost">
-              <span>Read Blog</span>
-              <span class="btn-arrow">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section class="section about-section" id="about">
-      <div class="section-container">
+      <!-- ===================================================================
+           1. FEED VIEW (Articles List & Substack Banner)
+           =================================================================== -->
+      <section class="section blog-page-section blog-feed-view" id="blog-feed-view">
         <div class="section-header">
           <div class="section-meta">
-            <span class="section-tag mono-tag">BIO & MANIFESTO</span>
-            <span class="section-tag mono-tag">WHO IS CHARLIE</span>
+            <span class="section-tag mono-tag">DISPATCHES & ESSAYS</span>
+            <span class="section-tag mono-tag">CHEERSCHARLIE.SUBSTACK.COM</span>
           </div>
-          <h2 class="section-title">ABOUT.</h2>
-        </div>
-
-        <div class="about-grid">
-          <!-- Portrait Frame -->
-          <div class="about-portrait-frame">
-            <div class="portrait-wrap">
-              <img src="./charlie_avatar.png" alt="Charlie - Portrait" class="portrait-img">
-              <div class="portrait-overlay">
-                <span class="mono-tag">CHARLIE // @CHEERS.CHARLIEE</span>
-              </div>
-            </div>
-            <div class="portrait-caption">
-              <span class="mono-tag">“A human mind w/ human-like thoughts.”</span>
-            </div>
-          </div>
-
-          <!-- About Narrative -->
-          <div class="about-content">
-            <h3 class="about-statement">
-              My name is Charlie. I'm a writer, journalist, and media personality with business development experience in creative industries.
-            </h3>
-            <div class="about-paragraphs">
-              <p>
-                I use my experience in writing, journalism, content creation, and music production/songwriting to inform my creative direction and strategy.
-              </p>
-              <p>
-                I operate at the intersection of media production and creative business development &amp; strategy, offering consulting and services in these areas.
-              </p>
-              <div class="about-experience-block">
-                <p class="experience-heading"><strong>My experience includes:</strong></p>
-                <ul class="about-experience-list">
-                  <li>Creative direction on event promotion campaigns.</li>
-                  <li>Event planning and organising.</li>
-                  <li>The set-up, concept design, and hosting of live-streamed music events.</li>
-                  <li>On-set producer for music videos and productions featuring actors and crew.</li>
-                  <li>Video script writing and conceptualising.</li>
-                  <li>Music production and writing.</li>
-                  <li>Creative and commercial strategy for creative industry start-ups and brands.</li>
-                </ul>
-              </div>
-              <p>
-                Backed by hands-on experience in event production and commercial development within creative sectors, I blend sharp narrative storytelling with practical industry strategy—bridging underground culture and professional execution.
-              </p>
-              <p>
-                Through “Status Quo.” I deliver unfiltered gonzo journalism, cultural critique, and essays on navigating modern life.
-              </p>
-            </div>
-
-            <!-- Spec Grid / Details -->
-            <div class="spec-grid">
-              <div class="spec-item">
-                <span class="spec-label mono-tag">LOCATION</span>
-                <span class="spec-val">Brisbane, Australia</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label mono-tag">DISCIPLINE</span>
-                <span class="spec-val">Writing & Journalism</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label mono-tag">EXPERTISE</span>
-                <span class="spec-val">Creative Business Development</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label mono-tag">PUBLICATION</span>
-                <span class="spec-val">Status Quo. (Substack)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section Navigation Teasers -->
-        <div class="pages-teaser-row">
-          <a href="./portfolio.html" class="page-teaser-card">
-            <div class="teaser-meta">
-              <span class="mono-tag">SELECTED WORKS</span>
-              <span class="mono-tag">PRODUCTION VAULT</span>
-            </div>
-            <h3 class="teaser-title">PORTFOLIO →</h3>
-            <p class="teaser-desc">Video content i've written or produced. Live event productions and creative media archive.</p>
-          </a>
-
-          <a href="./blog.html" class="page-teaser-card">
-            <div class="teaser-meta">
-              <span class="mono-tag">ESSAYS & DISPATCHES</span>
-              <span class="mono-tag">STATUS QUO.</span>
-            </div>
-            <h3 class="teaser-title">BLOG / SUBSTACK →</h3>
-            <p class="teaser-desc">Status Quo. essays on Gen-Z culture, philosophy, nightlife, and internet evolutions.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="section contact-section" id="contact">
-      <div class="section-container">
-        <div class="section-header">
-          <div class="section-meta">
-            <span class="section-tag mono-tag">REACH OUT</span>
-            <span class="section-tag mono-tag">BRISBANE & ONLINE</span>
-          </div>
-          <h2 class="section-title">CONTACT.</h2>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-left">
-            <h3 class="contact-prompt">Let's build something honest.</h3>
-            <p class="contact-desc">
-              Available for journalistic assignments, editorial writing, media appearances, event production consulting, and creative business development.
+          <div class="section-title-row">
+            <h1 class="section-title">STATUS QUO.</h1>
+            <p class="section-subtitle">
+              Journalism, analytical essays, think pieces.
             </p>
-
-            <div class="contact-channels">
-              <div class="channel-row">
-                <span class="channel-label mono-tag">LOCATION</span>
-                <span class="channel-static-val">Brisbane, QLD, Australia</span>
-              </div>
-              <div class="channel-row">
-                <span class="channel-label mono-tag">SUBSTACK</span>
-                <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer" class="channel-link">
-                  cheerscharlie.substack.com ↗
-                </a>
-              </div>
-              <div class="channel-row">
-                <span class="channel-label mono-tag">PROFILE</span>
-                <a href="https://www.instagram.com/cheers.charliee/" target="_blank" rel="noopener noreferrer" class="channel-link">
-                  @cheers.charliee ↗
-                </a>
-              </div>
-              <div class="channel-row">
-                <span class="channel-label mono-tag">DIRECT EMAIL</span>
-                <div class="email-copy-wrap">
-                  <a href="mailto:abam.enquiries@gmail.com" id="contact-email" class="channel-link">
-                    abam.enquiries@gmail.com
-                  </a>
-                  <button id="copy-email-btn" class="copy-btn" title="Copy email address">
-                    <span id="copy-btn-text">Copy</span>
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
+        </div>
 
-          <div class="contact-right">
-            <div class="inquiry-box">
-              <span class="mono-tag">CURRENT AVAILABILITY</span>
-              <p class="inquiry-status">
-                Accepting select writing commissions, media engagements, and creative business development projects for 2026.
-              </p>
-              <div class="inquiry-actions">
-                <a href="mailto:abam.enquiries@gmail.com?subject=Inquiry:%20Writing%20/%20Media%20/%20Business%20Development" class="btn-minimal full-width">
-                  <span>Send Direct Email</span>
+        <!-- Articles Feed Header -->
+        <div class="articles-feed-header">
+          <h2 class="articles-subheading">Recent Dispatches</h2>
+          <span class="mono-tag" id="article-count">4 ESSAYS</span>
+        </div>
+
+        <!-- Articles Grid (Injected via script.js) -->
+        <div class="articles-grid" id="articles-feed">
+          <!-- Dynamically populated from posts-data.js -->
+        </div>
+
+        <div class="dispatches-footer-cta">
+          <a href="https://cheerscharlie.substack.com/archive" target="_blank" rel="noopener noreferrer" class="btn-minimal">
+            <span>Explore Complete Substack Archive</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+
+        <!-- ===================================================================
+             BOTTOM NAVIGATION GATEWAY TO MEET CHARLIE (ONLY WAY TO ACCESS)
+             =================================================================== -->
+        <section class="meet-charlie-teaser-section" id="meet-charlie-gateway">
+          <div class="meet-charlie-card">
+            <div class="meet-charlie-portrait-col">
+              <img src="./charlie_avatar.png" alt="Charlie — Writer &amp; Journalist" class="meet-charlie-thumb-img">
+            </div>
+            <div class="meet-charlie-content-col">
+              <div class="meet-charlie-meta">
+                <span class="mono-tag">BEHIND STATUS QUO</span>
+                <span class="mono-tag">BIO // PORTFOLIO // CONTACT</span>
+              </div>
+              <div class="meet-charlie-body">
+                <h2 class="meet-charlie-headline">MEET CHARLIE.</h2>
+                <p class="meet-charlie-sub">
+                  Writer, journalist, and media personality with business development experience in creative industries. Based in Brisbane, Australia.
+                </p>
+              </div>
+              <div>
+                <a href="./meet-charlie.html" class="btn-minimal">
+                  <span>Meet Charlie</span>
                   <span class="btn-arrow">→</span>
                 </a>
-                <a href="https://cheerscharlie.substack.com/subscribe" target="_blank" rel="noopener noreferrer" class="btn-outline full-width">
-                  <span>Subscribe on Substack</span>
-                  <span class="btn-arrow">↗</span>
-                </a>
               </div>
             </div>
           </div>
+        </section>
+
+        <!-- Newsletter Subscription Box (Under Meet Charlie Banner) -->
+        <div class="feed-subscribe-card">
+          <div class="feed-subscribe-header">
+            <span class="mono-tag">STATUS QUO NEWSLETTER</span>
+            <h3 class="feed-subscribe-title">Get every dispatch directly to your inbox.</h3>
+            <p class="feed-subscribe-desc">Direct to your inbox via Substack. Free to read.</p>
+          </div>
+          <form 
+            class="newsletter-box" 
+            action="https://cheerscharlie.substack.com/subscribe" 
+            method="get" 
+            target="_blank"
+          >
+            <div class="newsletter-input-wrap">
+              <input 
+                type="email" 
+                name="email" 
+                class="newsletter-input" 
+                placeholder="Enter your email to subscribe..." 
+                required
+              >
+              <button type="submit" class="newsletter-submit-btn">
+                <span>Subscribe</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </form>
         </div>
-      </div>
-    </section>
+
+      </section>
+
+      <!-- ===================================================================
+           2. FULL ARTICLE ON-SITE READER VIEW (UP TO PAYWALL CUT-OFF)
+           =================================================================== -->
+      <article class="article-reader-view" id="article-reader-view" aria-hidden="true">
+        <!-- Top Reader Navigation -->
+        <div class="reader-top-nav">
+          <button id="reader-back-btn" class="back-to-feed-btn" title="Back to all dispatches">
+            <span>← Back to all dispatches</span>
+          </button>
+          <a id="reader-substack-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+            <span>Read on Substack</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+
+        <!-- Article Header -->
+        <header class="reader-header">
+          <div class="reader-meta-row">
+            <span class="mono-tag" id="reader-tag">CULTURE // GONZO</span>
+            <span class="mono-tag" id="reader-date">AUG 27, 2026</span>
+          </div>
+          <h1 class="reader-title" id="reader-title">Article Title</h1>
+          <div class="reader-byline">
+            <span>By Charlie</span> • <span>Brisbane, Australia</span> • <span id="reader-read-time">4 MIN READ</span>
+          </div>
+        </header>
+
+        <!-- Full Ripped Article Body Prose (Up to Paywall) -->
+        <div class="article-content-prose" id="reader-body">
+          <!-- Substack HTML injected here -->
+        </div>
+
+        <!-- Paywall Cut-Off Callout Box -->
+        <div class="paywall-cutoff-box">
+          <div class="paywall-fade-overlay"></div>
+          <div class="paywall-lock-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <span class="mono-tag">STATUS QUO EXCLUSIVE</span>
+          <h3 class="paywall-title">Continue reading on Substack</h3>
+          <p class="paywall-desc">
+            This dispatch continues behind the paywall. Read the full essay and support independent writing directly on Substack.
+          </p>
+          <a id="paywall-link-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-minimal btn-paywall">
+            <span>Read Full Essay on Substack</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+
+        <!-- Reader Bottom Navigation -->
+        <div class="reader-bottom-nav">
+          <button id="reader-back-bottom-btn" class="btn-ghost">
+            <span>← Back to All Dispatches</span>
+          </button>
+        </div>
+      </article>
+
+    </div>
   </main>
 
   <!-- SITE FOOTER -->
@@ -312,10 +218,7 @@
         </div>
 
         <div class="footer-nav">
-          <a href="./index.html#about">About</a>
-          <a href="./index.html#contact">Contact</a>
-          <a href="./portfolio.html">Portfolio</a>
-          <a href="./blog.html">Blog</a>
+          <a href="./meet-charlie.html">Meet Charlie →</a>
           <a href="https://cheerscharlie.substack.com/" target="_blank" rel="noopener noreferrer">Substack ↗</a>
         </div>
       </div>
@@ -333,6 +236,7 @@
     </div>
   </footer>
 
+  <script src="./posts-data.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>
