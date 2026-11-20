@@ -416,12 +416,12 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 /* --------------------------------------------------------------------------
-   5. BUTTONS
+   5. BUTTONS (MINIMAL & ARROW-FREE)
    -------------------------------------------------------------------------- */
 .btn-minimal {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0;
   padding: 0.85rem 1.6rem;
   background-color: var(--accent-solid);
   color: var(--accent-text);
@@ -440,7 +440,7 @@ html[data-theme="light"] .toggle-thumb {
 .btn-outline {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0;
   padding: 0.85rem 1.6rem;
   background-color: transparent;
   color: var(--text-primary);
@@ -464,7 +464,7 @@ html[data-theme="light"] .toggle-thumb {
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   color: var(--text-secondary);
@@ -476,13 +476,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .btn-arrow {
-  transition: transform 0.2s ease;
-}
-
-.btn-minimal:hover .btn-arrow,
-.btn-outline:hover .btn-arrow,
-.btn-ghost:hover .btn-arrow {
-  transform: translateX(3px);
+  display: none !important;
 }
 
 .full-width {
@@ -1180,24 +1174,101 @@ html[data-theme="light"] .toggle-thumb {
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
+  gap: 3.5rem 2.25rem;
 }
 
 .article-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 1.75rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.article-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+/* Primary Featured Article Card (Borderless Lead Dispatch on Landing Page) */
+.article-card-primary {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 0 3.5rem 0;
+  border-bottom: 1px solid var(--border-primary);
+  margin-bottom: 1rem;
+}
+
+.article-card-primary .article-card-image-wrap {
+  margin-bottom: 0;
+  height: 100%;
+  min-height: 320px;
+}
+
+.article-card-primary .article-card-thumb {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.article-card-primary .article-title {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.article-card-primary .article-excerpt {
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.article-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.primary-spotlight-pill {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+@media (max-width: 860px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .article-card-primary {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .article-card-primary .article-card-image-wrap {
+    min-height: auto;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .article-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-highlight);
+  transform: none;
+  border-color: transparent;
 }
 
 .article-card-image-wrap {
@@ -1207,7 +1278,7 @@ html[data-theme="light"] .toggle-thumb {
   border-radius: 4px;
   margin-bottom: 1.25rem;
   background-color: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  border: none;
 }
 
 .article-card-thumb {
@@ -1255,8 +1326,8 @@ html[data-theme="light"] .toggle-thumb {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.5rem;
+  border-top: none;
 }
 
 .article-read-btn {
@@ -2006,6 +2077,33 @@ html[data-theme="light"] .toggle-thumb {
 .article-content-prose .captioned-image-container {
   margin: 2.5rem 0;
   text-align: center;
+}
+
+.article-content-prose iframe {
+  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--border-primary);
+  margin: 2rem auto;
+  display: block;
+}
+
+.article-content-prose .youtube-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 2rem 0;
+}
+
+.article-content-prose .youtube-inner iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .article-content-prose figcaption {

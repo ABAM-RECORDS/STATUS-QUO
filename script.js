@@ -89,6 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const blogPostsData = [
     {
+      id: 'post-00',
+      title: 'Came From The Crumb.',
+      date: 'NOV 20, 2026',
+      readTime: '5 MIN READ',
+      link: 'https://cheerscharlie.substack.com/p/came-from-the-crumb',
+      excerpt: 'An interview with Arry, an Australian rapper. Navigating the modern creative landscape, cutting through digital slop, and staying authentic to underground culture.',
+      tag: 'JOURNALISM // MUSIC',
+      image: './came-from-the-crumb.jpg'
+    },
+    {
       id: 'post-02',
       title: 'The Price Of Invulnerability.',
       date: 'JUL 23, 2026',
@@ -253,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lbCategory) lbCategory.textContent = item.tag;
     if (lbDownload) {
       lbDownload.href = item.url;
-      lbDownload.textContent = 'Watch on YouTube ↗';
+      lbDownload.textContent = 'Watch on YouTube';
     }
 
     if (lbStage) {
@@ -321,37 +331,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     activePosts.forEach((post, index) => {
+      const isPrimary = (index === 0);
       const card = document.createElement('article');
-      card.className = 'article-card';
+      card.className = isPrimary ? 'article-card article-card-primary' : 'article-card';
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
       card.setAttribute('aria-label', `Read ${post.title}`);
 
       card.innerHTML = `
-        <div>
-          ${post.image ? `
-            <div class="article-card-image-wrap">
-              <img src="${post.image}" alt="${post.title}" class="article-card-thumb" loading="lazy">
-            </div>
-          ` : ''}
-          <div class="article-meta">
-            <span class="mono-tag">${post.tag}</span>
-            <span class="mono-tag">${post.date}</span>
+        ${post.image ? `
+          <div class="article-card-image-wrap">
+            <img src="${post.image}" alt="${post.title}" class="article-card-thumb" loading="lazy">
           </div>
-          <h3 class="article-title">${post.title}</h3>
-          <p class="article-excerpt">${post.excerpt}</p>
-        </div>
-        <div class="article-footer">
-          <span class="mono-tag">${post.readTime}</span>
-          <div class="article-actions-row">
-            <button class="btn-minimal sm" type="button">
-              <span>Read Dispatch</span>
-              <span class="btn-arrow">→</span>
-            </button>
-            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn-ghost sm" title="Open on Substack" onclick="event.stopPropagation()">
-              <span>Substack</span>
-              <span class="btn-arrow">↗</span>
-            </a>
+        ` : ''}
+        <div class="article-card-content">
+          <div>
+            <div class="article-meta">
+              <div class="article-meta-tags">
+                ${isPrimary ? '<span class="mono-tag primary-spotlight-pill">PRIMARY DISPATCH</span>' : ''}
+                <span class="mono-tag">${post.tag}</span>
+              </div>
+              <span class="mono-tag">${post.date}</span>
+            </div>
+            <h3 class="article-title">${post.title}</h3>
+            <p class="article-excerpt">${post.excerpt}</p>
+          </div>
+          <div class="article-footer">
+            <span class="mono-tag">${post.readTime}</span>
+            <div class="article-actions-row">
+              <button class="btn-minimal ${isPrimary ? '' : 'sm'}" type="button">
+                <span>Read Dispatch</span>
+              </button>
+              <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn-ghost sm" title="Open on Substack" onclick="event.stopPropagation()">
+                <span>Substack</span>
+              </a>
+            </div>
           </div>
         </div>
       `;
@@ -462,14 +476,10 @@ document.addEventListener('DOMContentLoaded', () => {
         portfolioSection.classList.remove('active');
         togglePortfolioBtn.setAttribute('aria-expanded', 'false');
         togglePortfolioBtn.querySelector('span:first-child').textContent = 'Explore Video Portfolio';
-        const arrow = togglePortfolioBtn.querySelector('.btn-arrow');
-        if (arrow) arrow.textContent = '↓';
       } else {
         portfolioSection.classList.add('active');
         togglePortfolioBtn.setAttribute('aria-expanded', 'true');
         togglePortfolioBtn.querySelector('span:first-child').textContent = 'Hide Video Portfolio';
-        const arrow = togglePortfolioBtn.querySelector('.btn-arrow');
-        if (arrow) arrow.textContent = '↑';
         portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
