@@ -7,10 +7,12 @@
    1. CSS CUSTOM PROPERTIES / THEMES
    -------------------------------------------------------------------------- */
 :root {
-  --font-display: 'Helvetica Neue', Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-logo: 'Helvetica Neue', Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Helvetica Neue', Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: Arial, 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Helvetica', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Helvetica', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-subheading: 'Helvetica', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-logo: 'Helvetica', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Helvetica', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Helvetica', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
 
   --transition-theme: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
                       color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
@@ -138,6 +140,12 @@ button {
 /* --------------------------------------------------------------------------
    3. TYPOGRAPHY & COMMON ATOMS
    -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
 .mono-tag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -685,6 +693,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .section-subtitle {
+  font-family: var(--font-subheading);
   font-size: 1.05rem;
   color: var(--text-secondary);
   max-width: 650px;
@@ -752,21 +761,20 @@ html[data-theme="light"] .toggle-thumb {
 
 .portfolio-card {
   position: relative;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease;
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
 }
 
 .portfolio-card:hover {
   transform: translateY(-4px);
-  border-color: var(--border-highlight);
+  border-color: transparent;
   box-shadow: var(--card-shadow);
 }
 
@@ -874,10 +882,11 @@ html[data-theme="light"] .toggle-thumb {
 /* Portfolio Callout */
 .portfolio-callout {
   margin-top: 3.5rem;
-  padding: 2.5rem;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
+  padding: 3.5rem 0 1rem;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid var(--border-primary);
+  border-radius: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1042,10 +1051,11 @@ html[data-theme="light"] .toggle-thumb {
    10. DISPATCHES / SUBSTACK SECTION
    -------------------------------------------------------------------------- */
 .substack-hero-card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 2.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-primary);
+  border-radius: 0;
+  padding: 0 0 3.5rem;
   margin-bottom: 3.5rem;
 }
 
@@ -1167,6 +1177,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .articles-subheading {
+  font-family: var(--font-subheading);
   font-size: 1.15rem;
   font-weight: 600;
 }
@@ -1229,6 +1240,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .article-card-primary .article-excerpt {
+  font-family: var(--font-subheading);
   font-size: 1rem;
   line-height: 1.65;
   margin-bottom: 1.75rem;
@@ -1315,6 +1327,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .article-excerpt {
+  font-family: var(--font-subheading);
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -1366,9 +1379,9 @@ html[data-theme="light"] .toggle-thumb {
 .portrait-wrap {
   position: relative;
   aspect-ratio: 1 / 1;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid var(--border-primary);
+  border: none;
   background-color: var(--bg-surface);
 }
 
@@ -1489,10 +1502,11 @@ html[data-theme="light"] .toggle-thumb {
    12. CONTACT SECTION
    -------------------------------------------------------------------------- */
 .contact-card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 3rem;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid var(--border-primary);
+  border-radius: 0;
+  padding: 3.5rem 0 1rem;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 3.5rem;
@@ -1507,6 +1521,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .contact-desc {
+  font-family: var(--font-subheading);
   font-size: 1rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
@@ -1564,10 +1579,10 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .inquiry-box {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 2rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -1690,7 +1705,7 @@ html[data-theme="light"] .toggle-thumb {
   .contact-card {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding: 2rem;
+    padding: 2.5rem 0 1rem;
   }
 }
 
@@ -1766,18 +1781,16 @@ html[data-theme="light"] .toggle-thumb {
 /* Clean Media Cards (No Captions) */
 .clean-media-card {
   padding: 0;
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
+  border: none;
+  border-radius: 4px;
   overflow: hidden;
   background-color: #000000;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease,
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .clean-media-card:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: var(--border-highlight);
   box-shadow: var(--card-shadow);
 }
 
@@ -2025,6 +2038,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .reader-byline {
+  font-family: var(--font-subheading);
   font-size: 0.92rem;
   color: var(--text-secondary);
 }
@@ -2042,17 +2056,33 @@ html[data-theme="light"] .toggle-thumb {
 
 .article-content-prose h1,
 .article-content-prose h2,
-.article-content-prose h3 {
-  font-family: var(--font-display);
+.article-content-prose h3,
+.article-content-prose h4,
+.article-content-prose h5,
+.article-content-prose h6 {
+  font-family: var(--font-heading);
   font-weight: 700;
   margin: 2.5rem 0 1rem;
   line-height: 1.25;
   color: var(--text-primary);
 }
 
+.article-content-prose h1 strong,
+.article-content-prose h2 strong,
+.article-content-prose h3 strong,
+.article-content-prose h4 strong,
+.article-content-prose h5 strong,
+.article-content-prose h6 strong {
+  font-family: inherit;
+  font-weight: 700;
+}
+
 .article-content-prose h1 { font-size: 1.85rem; }
 .article-content-prose h2 { font-size: 1.5rem; }
 .article-content-prose h3 { font-size: 1.25rem; }
+.article-content-prose h4 { font-size: 1.15rem; margin: 2rem 0 0.85rem; }
+.article-content-prose h5 { font-size: 1.05rem; margin: 1.75rem 0 0.75rem; }
+.article-content-prose h6 { font-size: 0.95rem; margin: 1.5rem 0 0.5rem; }
 
 .article-content-prose blockquote {
   border-left: 3px solid var(--accent-solid);
@@ -2127,10 +2157,11 @@ html[data-theme="light"] .toggle-thumb {
 
 .reader-footer-box {
   margin-top: 4rem;
-  padding: 2.5rem;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
+  padding: 3.5rem 0 1rem;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid var(--border-primary);
+  border-radius: 0;
 }
 
 .reader-bottom-nav {
@@ -2167,11 +2198,12 @@ html[data-theme="light"] .toggle-thumb {
    ========================================================================== */
 .paywall-cutoff-box {
   position: relative;
-  margin-top: 2.5rem;
-  padding: 3rem 2rem 2.5rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
+  margin-top: 3.5rem;
+  padding: 3.5rem 0 2.5rem;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border-primary);
+  border-radius: 0;
   text-align: center;
   overflow: hidden;
 }
@@ -2209,6 +2241,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .paywall-desc {
+  font-family: var(--font-subheading);
   color: var(--text-secondary);
   font-size: 1rem;
   max-width: 520px;
@@ -2229,19 +2262,19 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .meet-charlie-card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 2.75rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem;
   transition: var(--transition-smooth);
 }
 
 .meet-charlie-card:hover {
-  border-color: var(--border-highlight);
+  border-color: transparent;
 }
 
 .meet-charlie-portrait-col {
@@ -2252,8 +2285,8 @@ html[data-theme="light"] .toggle-thumb {
   width: 170px;
   height: 170px;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  border: none;
   display: block;
 }
 
@@ -2281,6 +2314,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .meet-charlie-sub {
+  font-family: var(--font-subheading);
   color: var(--text-secondary);
   font-size: 1.05rem;
   max-width: 680px;
@@ -2289,11 +2323,12 @@ html[data-theme="light"] .toggle-thumb {
 
 /* Newsletter Subscription Box (Below Articles Feed) */
 .feed-subscribe-card {
-  margin: 3.5rem 0 2rem;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 2.25rem 2.5rem;
+  margin: 4.5rem 0 2rem;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid var(--border-primary);
+  border-radius: 0;
+  padding: 3.5rem 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2302,7 +2337,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .feed-subscribe-card:hover {
-  border-color: var(--border-highlight);
+  border-color: var(--border-primary);
 }
 
 .feed-subscribe-header {
@@ -2322,6 +2357,7 @@ html[data-theme="light"] .toggle-thumb {
 }
 
 .feed-subscribe-desc {
+  font-family: var(--font-subheading);
   font-size: 0.88rem;
   color: var(--text-muted);
 }
@@ -2335,7 +2371,7 @@ html[data-theme="light"] .toggle-thumb {
   .meet-charlie-card {
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.75rem;
+    padding: 0;
     gap: 1.5rem;
   }
   .meet-charlie-thumb-img {
@@ -2345,7 +2381,8 @@ html[data-theme="light"] .toggle-thumb {
   .feed-subscribe-card {
     flex-direction: column;
     align-items: stretch;
-    padding: 1.75rem;
+    padding: 2.5rem 0 1rem;
+    margin: 3.5rem 0 1.5rem;
   }
   .feed-subscribe-card .newsletter-box {
     min-width: 100%;

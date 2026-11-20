@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'NOV 20, 2026',
       readTime: '5 MIN READ',
       link: 'https://cheerscharlie.substack.com/p/came-from-the-crumb',
-      excerpt: 'An interview with Arry, an Australian rapper. Navigating the modern creative landscape, cutting through digital slop, and staying authentic to underground culture.',
+      excerpt: 'An interview with Arry, an Australian rapper.',
       tag: 'JOURNALISM // MUSIC',
       image: './came-from-the-crumb.jpg'
     },
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'JUL 23, 2026',
       readTime: '6 MIN READ',
       link: 'https://cheerscharlie.substack.com/p/the-price-of-invulnerability',
-      excerpt: 'Invulnerable, but at what cost? Examining the modern emotional armor we construct to survive online culture, and the unexpected disconnection that follows.',
+      excerpt: 'Invulnerable, but at what cost?',
       tag: 'PHILOSOPHY'
     },
     {
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'MAY 24, 2026',
       readTime: '3 MIN READ',
       link: 'https://cheerscharlie.substack.com/p/nobody-dances-anymore',
-      excerpt: 'Matching your own freak, creating your own world (short and sweet). Why our nightlife turned into aesthetic self-surveillance and how to reclaim raw physical presence.',
+      excerpt: 'Matching your own freak, creating your own world (short and sweet).',
       tag: 'NIGHTLIFE // ESSAY'
     },
     {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'MAR 05, 2026',
       readTime: '5 MIN READ',
       link: 'https://cheerscharlie.substack.com/p/a-handjobs-a-blowjob-if-you-use-enough',
-      excerpt: 'My most self-indulgent dumpster fire yet — 3 tips for rationalising this shit show. An unfiltered exploration of modern romantic delusion and coping mechanisms.',
+      excerpt: 'My most self-indulgent dumpster fire yet - 3 tips for rationalising this shit show. (self-help???)',
       tag: 'SATIRE // LIFE-STYLE'
     },
     {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date: 'DEC 05, 2025',
       readTime: '7 MIN READ',
       link: 'https://cheerscharlie.substack.com/p/the-lost-art-of-surfing-the-web-why',
-      excerpt: 'Three ways the internet has evolved. From chaotic hyperlink rabbit holes and serendipitous discovery to the algorithmic monoculture of today.',
+      excerpt: 'Three ways the internet has evolved.',
       tag: 'INTERNET CULTURE'
     }
   ];
