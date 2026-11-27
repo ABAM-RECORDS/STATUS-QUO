@@ -90,6 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const blogPostsData = [
     {
       id: 'post-00',
+      title: "Brisbane's Freshest Boy-Band.",
+      date: 'NOV 27, 2026',
+      readTime: '12 MIN READ',
+      link: 'https://cheerscharlie.substack.com/p/brisbanes-freshest-boy-band',
+      excerpt: 'An interview with an Aus UDG group.',
+      tag: 'JOURNALISM // MUSIC',
+      image: './brisbanes-freshest-boy-band.jpg'
+    },
+    {
+      id: 'post-01',
       title: 'Came From The Crumb.',
       date: 'NOV 20, 2026',
       readTime: '5 MIN READ',
