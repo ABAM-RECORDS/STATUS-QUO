@@ -281,12 +281,29 @@ document.addEventListener('DOMContentLoaded', () => {
       lbStage.innerHTML = '';
       const iframe = document.createElement('iframe');
       iframe.className = item.isShort ? 'yt-player-frame yt-shorts-frame' : 'yt-player-frame yt-video-frame';
-      iframe.src = `https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      iframe.src = `https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&rel=0&playsinline=1`;
       iframe.title = item.title;
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.allowFullscreen = true;
       lbStage.appendChild(iframe);
     }
+  }
+
+  // Fallback for local file:// preview where browsers strip Referer (causing YouTube Error 153)
+  const heroVideoWrap = document.getElementById('landing-hero-video-wrap');
+  if (heroVideoWrap && window.location.protocol === 'file:') {
+    heroVideoWrap.innerHTML = `
+      <a href="https://youtu.be/Ctrw0wUWZzY" target="_blank" rel="noopener noreferrer" class="landing-hero-video-fallback" aria-label="Watch Brisbane's Freshest Boy-Band - Based N' Beautiful Interview on YouTube">
+        <img src="https://i.ytimg.com/vi/Ctrw0wUWZzY/maxresdefault.jpg" alt="Brisbane's Freshest Boy-Band - Based N' Beautiful Interview" onerror="this.src='https://i.ytimg.com/vi/Ctrw0wUWZzY/hqdefault.jpg'">
+        <span class="landing-hero-play-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <span>Watch on YouTube</span>
+        </span>
+      </a>
+    `;
   }
 
   function nextLightbox() {
