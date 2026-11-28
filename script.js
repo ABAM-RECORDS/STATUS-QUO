@@ -131,9 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'A Handjob’s A Blowjob, If You Use Enough Lube.',
       date: 'MAR 05, 2026',
       readTime: '5 MIN READ',
-      link: 'https://cheerscharlie.substack.com/p/a-handjobs-a-blowjob-if-you-use-enough',
+      link: 'https://cheerscharlie.substack.com/p/a-handjobs-a-blowjob-if-you-use-enough?r=4oo0ok',
       excerpt: 'My most self-indulgent dumpster fire yet - 3 tips for rationalising this shit show. (self-help???)',
-      tag: 'SATIRE // LIFE-STYLE'
+      tag: 'SATIRE // LIFE-STYLE',
+      image: './handjob-blowjob.png'
     },
     {
       id: 'post-05',
